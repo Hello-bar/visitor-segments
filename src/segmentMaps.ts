@@ -32,6 +32,10 @@ import { OriginalReferrer } from './segments/originalReferrer';
 import { Custom } from './segments/custom';
 import { ValueStorageInterface } from './lib/interfaces';
 import { SessionUUID } from './segments/sessionUUID';
+import { RegionName } from './segments/regionName';
+import { CountryName } from './segments/countryName';
+import { MobileCell } from './segments/mobileCell';
+import { Timezone } from './segments/timezone';
 
 type SegmentClassMap = { [key: string]: new (visitor: ValueStorageInterface) => Segment };
 type SegmentMap = { [key: string]: Segment };
@@ -67,7 +71,11 @@ export enum SEGMENT_KEYS {
   LAST_CONVERSION = 'cnv_l',
   CITY = 'gl_cty',
   COUNTRY = 'gl_ctr',
+  COUNTRY_NAME = 'gl_c',
   REGION = 'gl_rgn',
+  REGION_NAME = 'gl_r',
+  MOBILE_CELL = 'gl_m',
+  TIMEZONE = 'gl_t',
   CUSTOM = 'cs',
 }
 
@@ -102,7 +110,11 @@ export const SEGMENTS: SegmentClassMap = {
   [SEGMENT_KEYS.LAST_CONVERSION]: LastConversion,
   [SEGMENT_KEYS.CITY]: City,
   [SEGMENT_KEYS.COUNTRY]: Country,
+  [SEGMENT_KEYS.COUNTRY_NAME]: CountryName,
   [SEGMENT_KEYS.REGION]: Region,
+  [SEGMENT_KEYS.REGION_NAME]: RegionName,
+  [SEGMENT_KEYS.MOBILE_CELL]: MobileCell,
+  [SEGMENT_KEYS.TIMEZONE]: Timezone,
   [SEGMENT_KEYS.CUSTOM]: Custom,
 };
 

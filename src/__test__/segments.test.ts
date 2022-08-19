@@ -90,9 +90,9 @@ describe('Segments', () => {
 
   describe('reset', () => {
     it('sets default values', async () => {
-      await segments.visit()
-      segments.reset()
-      expect(segments.visits.count).toEqual(0)
+      await segments.visit();
+      segments.reset();
+      expect(segments.visits.count).toEqual(0);
     });
-  })
+  });
 });

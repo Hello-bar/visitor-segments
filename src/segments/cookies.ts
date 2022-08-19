@@ -1,7 +1,7 @@
 import { SEGMENT_KEYS } from '../segmentMaps';
 import { Segment } from '../segment';
 import { ValueStorageInterface } from '../lib/interfaces';
-import {parseCookies} from "../lib/parseCookies";
+import { parseCookies } from '../lib/parseCookies';
 
 export class Cookies extends Segment {
   constructor(visitor: ValueStorageInterface) {

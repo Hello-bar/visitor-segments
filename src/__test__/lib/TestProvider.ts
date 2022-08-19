@@ -3,7 +3,7 @@ import { GEO_INFO_STATUSES, GeoLocationInfo, GeoProviderAdapter } from '../../li
 export class TestProvider implements GeoProviderAdapter {
   info: GeoLocationInfo = { status: GEO_INFO_STATUSES.success };
 
-  set(key: any, value: string) {
+  set(key: any, value: any) {
     (this.info as any)[key] = value;
   }
 

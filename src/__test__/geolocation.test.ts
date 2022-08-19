@@ -32,6 +32,8 @@ describe('Segments.geolocation', () => {
       geoAdapter.set('regionName', 'Florida');
       geoAdapter.set('countryCode', 'US');
       geoAdapter.set('country', 'United States');
+      geoAdapter.set('timezone', 'America/New_York');
+      geoAdapter.set('mobile', false);
       await segments.visit();
     });
 
@@ -45,6 +47,22 @@ describe('Segments.geolocation', () => {
 
     it('has .country', () => {
       expect(segments.geolocation.country).toEqual('US');
+    });
+
+    it('has .countryName', () => {
+      expect(segments.geolocation.countryName).toEqual('United States');
+    });
+
+    it('has .regionName', () => {
+      expect(segments.geolocation.regionName).toEqual('Florida');
+    });
+
+    it('has .regionName', () => {
+      expect(segments.geolocation.timezone).toEqual('America/New_York');
+    });
+
+    it('has .mobile', () => {
+      expect(segments.geolocation.mobileCell).toEqual(false);
     });
   });
 });

@@ -6,7 +6,7 @@ export class IPApiProvider implements GeoProviderAdapter {
   get url(): string {
     const fields = 'status,country,countryCode,regionName,region,city,timezone,mobile';
     return IPApiProvider.key
-      ? `https://pro.ip-api.com/json?key${IPApiProvider.key}&fields=${fields}`
+      ? `https://pro.ip-api.com/json?key=${IPApiProvider.key}&fields=${fields}`
       : `http://ip-api.com/json?fields=${fields}`;
   }
 
