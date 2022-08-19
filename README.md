@@ -8,7 +8,7 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/Hello-bar/visitor-segments/actions/workflows/nodejs.yml"><img alt="GitHub CI Status" src="https://img.shields.io/github/workflow/status/facebook/jest/Node%20CI?label=CI&logo=GitHub"></a>
+  <a href="https://dl.circleci.com/status-badge/redirect/gh/Hello-bar/visitor-segments/tree/main"><img alt="CircleCI" src="https://dl.circleci.com/status-badge/img/gh/Hello-bar/visitor-segments/tree/main.svg?style=svg"></a>
   <a href="https://codecov.io/github/Hello-bar/visitor-segments"><img alt="Coverage Status" src="https://img.shields.io/codecov/c/github/Hello-bar/visitor-segments/main.svg?maxAge=43200"></a>
 </p>
 
