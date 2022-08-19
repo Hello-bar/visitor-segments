@@ -60,6 +60,7 @@ describe('Segments', () => {
       expect(segments.interpolate('%{name}')).toEqual('Anton');
       segments.visit();
       expect(segments.interpolate('%{name}, %{visits.count}')).toEqual('Anton, 1');
+      expect(segments.interpolate('%{name} %{undefined}')).toEqual('Anton ');
     });
   });
 
@@ -86,4 +87,12 @@ describe('Segments', () => {
       expect(fired).toEqual([{ key: 'test', value: 'foo' }]);
     });
   });
+
+  describe('reset', () => {
+    it('sets default values', async () => {
+      await segments.visit()
+      segments.reset()
+      expect(segments.visits.count).toEqual(0)
+    });
+  })
 });

@@ -4,8 +4,7 @@ export class TestProvider implements GeoProviderAdapter {
   info: GeoLocationInfo = { status: GEO_INFO_STATUSES.success };
 
   set(key: any, value: string) {
-    // @ts-ignore
-    this.info[key] = value;
+    (this.info as any)[key] = value;
   }
 
   async getLocationInfo() {

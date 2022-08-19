@@ -42,6 +42,22 @@ describe('Segments.page', () => {
     expect(segments.page.cookies).toEqual({});
   });
 
+  describe('with cookies', () => {
+    it('.cookies returns an object', () => {
+      document.cookie = 'key=value;'
+      document.cookie = 'key2=value2;'
+      document.cookie = 'bool=true;'
+      document.cookie = 'num=1;'
+      segments.visit()
+      expect(segments.page.cookies).toEqual({
+        "key": "value",
+        "key2": "value2",
+        "bool": true,
+        "num": 1
+      });
+    });
+  });
+
   describe('when userAgent is a desktop', () => {
     it('.device is "computer"', () => {
       expect(segments.page.device).toEqual('computer');
