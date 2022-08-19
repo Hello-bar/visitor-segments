@@ -25,7 +25,8 @@ jobs:
     executor: node/default
     parallelism: 4
     steps:
-      - checkout
+      - checkout:
+        path: ~/visitor-segments
       - node/install:
           node-version: << parameters.node-version >>
       - node/install-packages: *install
