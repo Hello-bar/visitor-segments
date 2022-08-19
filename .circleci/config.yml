@@ -5,7 +5,7 @@ version: 2.1
 aliases:
   - &install
     pkg-manager: yarn
-    override-ci-command: yarn install --immutable && yarn build:js
+    override-ci-command: yarn install --immutable
     cache-path: ~/.yarn/berry/cache
     include-branch-in-cache-key: false
     app-dir: ~/segments
@@ -33,7 +33,7 @@ jobs:
           command: yarn test-ci --shard=$(expr $CIRCLE_NODE_INDEX + 1)/$CIRCLE_NODE_TOTAL
       - store_test_results:
           path: reports/junit
-      - codecov/upload    
+      - codecov/upload
 
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
