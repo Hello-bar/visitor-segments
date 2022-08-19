@@ -1,4 +1,4 @@
-import {Segments} from "./index";
+import {Segments} from "./segments";
 import {SEGMENT_KEYS} from "./segmentMaps";
 import {Conversions as ConversionsSegment} from "./segments/conversions";
 import {FirstConversion} from "./segments/firstConversion";

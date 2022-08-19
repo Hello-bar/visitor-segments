@@ -1,4 +1,4 @@
-import {Segments} from "./index";
+import {Segments} from "./segments";
 import {SEGMENT_KEYS} from "./segmentMaps";
 import {Sessions} from "./segments/sessions";
 import {ValueStorage} from "./valueStorage";

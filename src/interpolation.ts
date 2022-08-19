@@ -1,4 +1,4 @@
-import {Segments} from "./index";
+import {Segments} from "./segments";
 
 export class Interpolation {
   readonly #segments: Segments;

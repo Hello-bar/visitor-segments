@@ -1,4 +1,4 @@
-import {Segments} from "./index";
+import {Segments} from "./segments";
 import {SEGMENT_KEYS} from "./segmentMaps";
 import {City} from "./segments/city";
 import {Region} from "./segments/region";

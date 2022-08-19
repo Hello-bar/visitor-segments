@@ -1,5 +1,4 @@
-import {Segments} from "../../index";
-import {LocalStorageAdapter} from "../../valueStorage/localStorageAdapter";
+import {Segments} from "../../segments";
 import {TestProvider} from "./TestProvider";
 
 export const geoAdapter = new TestProvider

@@ -1,4 +1,4 @@
-import {Segments} from "./index";
+import {Segments} from "./segments";
 import {SEGMENT_KEYS} from "./segmentMaps";
 import {Device} from "./segments/device";
 import {DateSegment} from "./segments/dateSegment";

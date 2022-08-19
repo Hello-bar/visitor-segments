@@ -1,4 +1,4 @@
-import {Segments} from "./index";
+import {Segments} from "./segments";
 import {SEGMENT_KEYS} from "./segmentMaps";
 import {AdCampaign} from "./segments/adCampaign";
 import {AdTerm} from "./segments/adTerm";
