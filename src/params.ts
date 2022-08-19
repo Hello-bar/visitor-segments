@@ -7,7 +7,7 @@ import { AdMedium } from './segments/adMedium';
 import { AdContent } from './segments/adContent';
 import { Params as ParamsSegment } from './segments/params';
 import { SegmentsFacade } from './lib/interfaces';
-import paramsFromString from './segments/paramsFromString';
+import paramsFromString from './lib/paramsFromString';
 
 export class Params implements SegmentsFacade {
   #campaign: AdCampaign;

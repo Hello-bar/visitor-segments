@@ -1,5 +1,5 @@
-import { getTLD } from './getTLD';
-import paramsFromString from './paramsFromString';
+import { getTLD } from '../lib/getTLD';
+import paramsFromString from '../lib/paramsFromString';
 
 type ReferrerInfo = {
   referrer: string;
