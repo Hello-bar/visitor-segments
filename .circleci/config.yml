@@ -1,0 +1,47 @@
+# Use the latest 2.1 version of CircleCI pipeline process engine.
+# See: https://circleci.com/docs/2.0/configuration-reference
+version: 2.1
+
+aliases:
+  - &install
+    pkg-manager: yarn
+    override-ci-command: yarn install --immutable
+    cache-path: ~/.yarn/berry/cache
+    include-branch-in-cache-key: false
+    app-dir: ~/visitor-segments
+
+orbs:
+  node: circleci/node@5.0.0
+  codecov: codecov/codecov@3.0.0
+
+# Define a job to be invoked later in a workflow.
+# See: https://circleci.com/docs/2.0/configuration-reference/#jobs
+jobs:
+  test-node:
+    parameters:
+      node-version:
+        type: string
+    working_directory: ~/visitor-segments
+    executor: node/default
+    parallelism: 4
+    steps:
+      - checkout
+      - node/install:
+          node-version: << parameters.node-version >>
+      - node/install-packages: *install
+      - run:
+          command: yarn test-ci --shard=$(expr $CIRCLE_NODE_INDEX + 1)/$CIRCLE_NODE_TOTAL
+      - store_test_results:
+          path: reports/junit
+      - codecov/upload
+
+# Invoke jobs via workflows
+# See: https://circleci.com/docs/2.0/configuration-reference/#workflows
+workflows:
+  build-and-deploy:
+    jobs:
+      - test-node:
+          name: test-node-partial-<< matrix.node-version >>
+          matrix:
+            parameters:
+              node-version: ['14', '16', '18']
