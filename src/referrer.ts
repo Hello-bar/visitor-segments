@@ -23,23 +23,23 @@ export class Referrer implements SegmentsFacade {
     this.#previousPage = segments.getSegmentByKey(SEGMENT_KEYS.PREVIOUS_PAGE)
   }
 
-  get originalReferrer(): string|null {
+  get originalReferrer(): string | null {
     return this.#originalReferrer.value
   }
 
-  get referrer(): string|null {
+  get referrer(): string | null {
     return this.#referrer.value
   }
 
-  get referrerDomain(): string|null {
+  get referrerDomain(): string | null {
     return this.#referrerDomain.value
   }
 
-  get referrerTerms(): string|null {
+  get referrerTerms(): string | null {
     return this.#referrerTerms.value
   }
 
-  get previousPage(): string|null {
+  get previousPage(): string | null {
     return this.#previousPage.value
   }
 

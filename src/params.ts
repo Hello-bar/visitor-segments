@@ -25,23 +25,23 @@ export class Params implements SegmentsFacade {
     this.#params = segments.getSegmentByKey(SEGMENT_KEYS.PARAMS)
   }
 
-  get campaign(): string|null {
+  get campaign(): string | null {
     return this.#campaign.value
   }
 
-  get content(): string|null {
+  get content(): string | null {
     return this.#content.value
   }
 
-  get medium(): string|null {
+  get medium(): string | null {
     return this.#medium.value
   }
 
-  get source(): string|null {
+  get source(): string | null {
     return this.#source.value
   }
 
-  get term(): string|null {
+  get term(): string | null {
     return this.#term.value
   }
 

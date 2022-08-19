@@ -9,7 +9,7 @@ export abstract class Segment {
     this.#key = key;
   }
 
-  get key (): string {
+  get key(): string {
     return this.#key
   }
 
@@ -33,7 +33,7 @@ export abstract class Segment {
     this.#visitor.setValueOnce(this.key, value)
   }
 
-  protected now (): number {
+  protected now(): number {
     return this.#visitor.now()
   }
 
@@ -41,4 +41,3 @@ export abstract class Segment {
     // to be implemented
   }
 }
-

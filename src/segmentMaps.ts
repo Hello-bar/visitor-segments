@@ -33,8 +33,8 @@ import {Custom} from "./segments/custom";
 import {ValueStorageInterface} from "./lib/interfaces";
 import {SessionUUID} from "./segments/sessionUUID";
 
-type SegmentClassMap = {[key: string]: new(visitor: ValueStorageInterface) => Segment}
-type SegmentMap = {[key: string]: Segment}
+type SegmentClassMap = { [key: string]: new(visitor: ValueStorageInterface) => Segment }
+type SegmentMap = { [key: string]: Segment }
 
 export enum SEGMENT_KEYS {
   FIRST_VISIT = 'fv',
@@ -109,6 +109,6 @@ export const SEGMENTS: SegmentClassMap = {
 export const buildSegments = (visitor: ValueStorageInterface) => {
   return Object.keys(SEGMENTS).reduce((map: SegmentMap, key: string) => {
     const klass = SEGMENTS[key]
-    return { [key]: new klass(visitor), ...map }
+    return {[key]: new klass(visitor), ...map}
   }, {})
 }

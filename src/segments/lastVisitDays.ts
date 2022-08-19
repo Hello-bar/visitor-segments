@@ -1,6 +1,6 @@
 import {SEGMENT_KEYS} from "../segmentMaps";
 import {Segment} from "../segment";
-import {DAY} from "../../lib/dateUtils";
+import {DAY} from "../lib/dateUtils";
 import {ValueStorageInterface} from "../lib/interfaces";
 
 export class LastVisitDays extends Segment {
@@ -12,7 +12,7 @@ export class LastVisitDays extends Segment {
     super.setValue(Math.round((this.now() - lastVisit) / DAY));
   }
 
-  reset (value: number) {
+  reset(value: number) {
     super.reset()
     this.setValue(value)
   }

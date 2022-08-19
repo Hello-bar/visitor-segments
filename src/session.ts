@@ -30,7 +30,7 @@ export class Session implements SegmentsFacade {
     this.#sessionUUID.reset()
   }
 
-  update () {
+  update() {
     this.#sessionUUID.setValue()
     if (!this.#sessionHolder.getValue(this.#sessionUUID.value)) {
       this.#sessionUUID.reset()
@@ -41,7 +41,7 @@ export class Session implements SegmentsFacade {
     }
   }
 
-  reset () {
+  reset() {
     this.#sessions.reset()
     this.#sessionUUID.reset()
   }

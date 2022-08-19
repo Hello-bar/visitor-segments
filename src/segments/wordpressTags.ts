@@ -2,6 +2,12 @@ import {SEGMENT_KEYS} from "../segmentMaps";
 import {Segment} from "../segment";
 import {ValueStorageInterface} from "../lib/interfaces"
 
+declare global {
+  interface Window {
+    _hellobar_wordpress_tags: string[];
+  }
+}
+
 export class WordpressTags extends Segment {
   constructor(visitor: ValueStorageInterface) {
     super(SEGMENT_KEYS.WORDPRESS_TAGS, visitor);

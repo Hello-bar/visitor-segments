@@ -11,7 +11,7 @@ export class Visits extends Segment {
     return super.value || 0
   }
 
-  setValue(value?:any) {
+  setValue(value?: any) {
     super.setValue(value || this.value + 1);
   }
 }

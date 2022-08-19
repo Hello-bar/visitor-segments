@@ -11,7 +11,7 @@ export class FirstVisit extends Segment {
     super.setValueOnce(this.now());
   }
 
-  reset () {
+  reset() {
     super.reset()
     this.setValue()
   }

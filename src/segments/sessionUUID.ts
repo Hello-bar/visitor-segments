@@ -7,16 +7,16 @@ export class SessionUUID extends Segment {
     super(SEGMENT_KEYS.SESSION_UUID, visitor);
   }
 
-  get value (): string {
+  get value(): string {
     if (!super.value) {
       this.setValue()
     }
     return super.value
   }
 
-  setValue(value?:any) {
+  setValue(value?: any) {
     console.log(this.generateUUID())
-    super.setValueOnce(value||this.generateUUID());
+    super.setValueOnce(value || this.generateUUID());
   }
 
   reset() {
@@ -24,12 +24,12 @@ export class SessionUUID extends Segment {
     super.setValue();
   }
 
-  private generateUUID():string {
+  private generateUUID(): string {
     let dt = new Date().getTime();
     return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, (c) => {
-      const r = (dt + Math.random()*16)%16 | 0;
-      dt = Math.floor(dt/16);
-      return (c === 'x' ? r :(r&0x3|0x8)).toString(16);
+      const r = (dt + Math.random() * 16) % 16 | 0;
+      dt = Math.floor(dt / 16);
+      return (c === 'x' ? r : (r & 0x3 | 0x8)).toString(16);
     });
   }
 }

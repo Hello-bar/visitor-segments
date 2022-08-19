@@ -1,11 +1,11 @@
-function stripTrailingSlash (urlPart: string) {
+function stripTrailingSlash(urlPart: string) {
   return urlPart.replace(/(.+)\/$/i, '$1')
 }
 
 // Normalizes a URL so that "https://www.google.com/#foo" becomes "http://google.com"
 // Also sorts the params alphabetically
-export function normalizeUrl (url: string, pathOnly: boolean) {
-  url = `${ url }`.toLowerCase()
+export function normalizeUrl(url: string, pathOnly: boolean) {
+  url = `${url}`.toLowerCase()
   // Add trailing slash when we think it's needed
   if (url.match(/^https?:\/\/[^\/?]*$/i) ||
     url.match(/^[^\/]*\.(com|edu|gov|us|net|io)$/i)) url += '/'
@@ -39,14 +39,14 @@ export function normalizeUrl (url: string, pathOnly: boolean) {
 
   // If no params just return the URL with ?
   if (!urlParts[1]) {
-    return `${ stripTrailingSlash(urlParts[0]) }?`
+    return `${stripTrailingSlash(urlParts[0])}?`
   }
 
   // Sort the params
   const sortedParams = urlParts[1].split('&').sort()
     .join('&')
 
-  const strippedUrl = stripTrailingSlash(`${ urlParts[0] }/`)
+  const strippedUrl = stripTrailingSlash(`${urlParts[0]}/`)
 
-  return `${ strippedUrl }?${ sortedParams }`
+  return `${strippedUrl}?${sortedParams}`
 }

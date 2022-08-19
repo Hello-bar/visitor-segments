@@ -11,7 +11,7 @@ export class Device extends Segment {
     super.setValue(value || this.defaultValue());
   }
 
-  protected defaultValue () {
+  protected defaultValue() {
     const ua = navigator.userAgent
     if (ua.match(/ipad/i)) return 'tablet'
     else if (ua.match(/(mobi|phone|ipod|blackberry|docomo)/i)) return 'mobile'

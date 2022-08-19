@@ -32,7 +32,7 @@ export class Page implements SegmentsFacade {
     return this.#device.value
   }
 
-  get cookies(): {}|null {
+  get cookies(): {} | null {
     return this.#cookies.value
   }
 

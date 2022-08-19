@@ -7,7 +7,7 @@ export class FirstConversion extends Segment {
     super(SEGMENT_KEYS.FIRST_CONVERSION, visitor);
   }
 
-  setValue(value?:any) {
+  setValue(value?: any) {
     super.setValueOnce(value || this.now());
   }
 }

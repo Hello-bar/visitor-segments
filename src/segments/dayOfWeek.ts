@@ -11,7 +11,7 @@ export class DayOfWeek extends Segment {
     return super.value
   }
 
-  setValue(value?:any) {
+  setValue(value?: any) {
     const nowDate = new Date()
     super.setValue(value || nowDate.getDay());
   }

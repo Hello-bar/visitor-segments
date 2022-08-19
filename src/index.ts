@@ -12,10 +12,6 @@ import {StorageAdapterClass} from "./lib/interfaces";
 import {Interpolation} from "./interpolation";
 
 export class Segments {
-  readonly #segments: { [key: string]: Segment };
-  readonly #visitor: Visitor;
-  readonly #interpolation: Interpolation;
-  private custom: Segment;
   visits: Visits;
   session: Session;
   params: Params;
@@ -23,6 +19,10 @@ export class Segments {
   referrer: Referrer;
   page: Page;
   conversions: Conversions;
+  readonly #segments: { [key: string]: Segment };
+  readonly #visitor: Visitor;
+  readonly #interpolation: Interpolation;
+  private custom: Segment;
 
   constructor(key: string, adapter: StorageAdapterClass) {
     this.#visitor = new Visitor(key, adapter)
@@ -38,12 +38,12 @@ export class Segments {
     this.custom = this.getSegmentByKey(SEGMENT_KEYS.CUSTOM)
   }
 
-  interpolate(input:string) {
+  interpolate(input: string) {
     return this.#interpolation.run(input)
   }
 
   set(key: string, value: any) {
-    this.custom.setValue({ ...this.custom.value, [key]: value })
+    this.custom.setValue({...this.custom.value, [key]: value})
   }
 
   get(key: string) {

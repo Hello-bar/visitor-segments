@@ -4,7 +4,7 @@ export class StoredValue implements StoredValueInterface {
   value: any;
   expiration: Date;
 
-  constructor(json:string) {
+  constructor(json: string) {
     const {value, expiration} = JSON.parse(json)
     this.value = value
     this.expiration = new Date(expiration)

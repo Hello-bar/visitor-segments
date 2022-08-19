@@ -11,14 +11,20 @@ export class ValueStorage {
     this.expiresInMs = expiresInMinutes * MINUTE
   }
 
-  setValue (key: string, value: any) {
+  private get expiration(): string {
+    const date = new Date()
+    date.setTime(date.getTime() + this.expiresInMs)
+    return date.toISOString()
+  }
+
+  setValue(key: string, value: any) {
     this.adapter.setValue(key, {
       value,
       expiration: this.expiration
     })
   }
 
-  getValue (key: string) {
+  getValue(key: string) {
     const json = this.adapter.getValue(key)
 
     if (json) {
@@ -35,13 +41,7 @@ export class ValueStorage {
     return undefined
   }
 
-  removeValue (key: string) {
+  removeValue(key: string) {
     return this.adapter.removeValue(key)
-  }
-
-  private get expiration(): string {
-    const date = new Date()
-    date.setTime(date.getTime() + this.expiresInMs)
-    return date.toISOString()
   }
 }

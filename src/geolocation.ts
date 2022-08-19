@@ -25,16 +25,12 @@ export class GeoLocation implements SegmentsFacade {
   #city: City;
   #region: Region;
   #country: Country;
-  #key: string|null = null;
+  #key: string | null = null;
 
   constructor(segments: Segments) {
     this.#city = segments.getSegmentByKey(SEGMENT_KEYS.CITY)
     this.#region = segments.getSegmentByKey(SEGMENT_KEYS.REGION)
     this.#country = segments.getSegmentByKey(SEGMENT_KEYS.COUNTRY)
-  }
-
-  setKey(key: string) {
-    this.#key = key
   }
 
   get url(): string {
@@ -54,6 +50,10 @@ export class GeoLocation implements SegmentsFacade {
 
   get country(): string | null {
     return this.#country.value
+  }
+
+  setKey(key: string) {
+    this.#key = key
   }
 
   async update() {

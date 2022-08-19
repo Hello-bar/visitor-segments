@@ -1,4 +1,4 @@
-import {now} from "./lib/dateUtils";
+import {now, MINUTES_IN_DAY} from "./lib/dateUtils";
 import {ValueStorage} from "./valueStorage";
 import {StorageAdapterClass, ValueStorageInterface} from "./lib/interfaces";
 
@@ -6,12 +6,10 @@ type VisitorData = {
   [key: string]: string | number
 }
 
-const MINUTES_IN_DAY = 60 * 24
-
 export class Visitor implements ValueStorageInterface {
+  protected data: VisitorData;
   private readonly storage: ValueStorage;
   private readonly key: string;
-  protected data: VisitorData;
 
   constructor(key: string, adapter: StorageAdapterClass, expiresInDays: number = 365 * 5) {
     this.storage = new ValueStorage(new adapter(), expiresInDays * MINUTES_IN_DAY)
@@ -41,7 +39,7 @@ export class Visitor implements ValueStorageInterface {
     this.save()
   }
 
-  now (): number {
+  now(): number {
     return now()
   }
 

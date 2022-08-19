@@ -14,7 +14,7 @@ export default function referrerInfo(): ReferrerInfo | null {
   if (!document.referrer) return null
 
   // Check to ensure that the tld is not present in the
-  const referrer = `${ document.referrer }`
+  const referrer = `${document.referrer}`
     .replace(/.*?\:\/\//, '')
     .replace(/www\./i, '')
     .toLowerCase()

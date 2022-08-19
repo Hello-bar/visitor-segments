@@ -7,17 +7,18 @@ export class DateSegment extends Segment {
     super(SEGMENT_KEYS.DATE, visitor);
   }
 
-  setValue(value?:any) {
+  setValue(value?: any) {
     super.setValue(value || yearMonthDay(new Date()));
   }
 }
 
 // returns date in format of 'YYYY-MM-DD'
-function yearMonthDay (date: Date) {
-  function zeropad (string: string): string {
+function yearMonthDay(date: Date) {
+  function zeropad(string: string): string {
     const length = Math.max(string.length, 2)
-    return string.length >= length ? string : `0${ string }`
+    return string.length >= length ? string : `0${string}`
   }
+
   const month = date.getMonth() + 1
   const day = date.getDate()
 

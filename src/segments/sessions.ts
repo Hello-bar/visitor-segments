@@ -7,11 +7,11 @@ export class Sessions extends Segment {
     super(SEGMENT_KEYS.SESSIONS, visitor);
   }
 
-  get value (): number {
+  get value(): number {
     return super.value || 0
   }
 
-  setValue(value?:any) {
+  setValue(value?: any) {
     super.setValue(value || this.value + 1);
   }
 
