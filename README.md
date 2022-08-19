@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="https://badge.fury.io/js/jest">
+  <a href="https://badge.fury.io/js/visitor-segments">
     <img src="https://badge.fury.io/js/visitor-segments.svg" alt="npm version">
   </a>
   <a href="https://github.com/facebook/jest/blob/main/LICENSE">
