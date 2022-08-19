@@ -10,7 +10,7 @@
   },
   "keywords": [],
   "author": "Anton Sozontov <asozontov@gmail.com>",
-  "license": "ISC",
+  "license": "MIT",
   "jest": {
     "verbose": true,
     "testEnvironment": "jsdom",

@@ -1,18 +1,20 @@
 /**
  * @jest-environment jsdom
  */
-import {Visits} from "../src/visits";
-import {Session} from "../src/session";
-import {Conversions} from "../src/conversions";
-import {Params} from "../src/params";
-import {GeoLocation} from "../src/geolocation";
-import {Referrer} from "../src/referrer";
-import {Page} from "../src/page";
+import {Visits} from "../visits";
+import {Session} from "../session";
+import {Conversions} from "../conversions";
+import {Params} from "../params";
+import {GeoLocation} from "../geolocation";
+import {Referrer} from "../referrer";
+import {Page} from "../page";
 import {segments} from "./lib/segments";
 
 
 describe('Segments', () => {
-  afterEach(() => { segments.clear() })
+  afterEach(() => {
+    segments.clear()
+  })
 
   it('has .visits', () => {
     expect(segments.visits).toBeInstanceOf(Visits)
@@ -71,6 +73,18 @@ describe('Segments', () => {
       segments.visit()
       expect(segments.visits.count).toEqual(1)
       segments.clear()
+    })
+  })
+
+  describe('onUpdate', () => {
+    it('fires handlers after .set', () => {
+      const fired:any = []
+
+      segments.onUpdate((key: string, value: string) => {
+        fired.push({key, value})
+      })
+      segments.set('test', 'foo')
+      expect(fired).toEqual([{key: 'test', value: 'foo'}])
     })
   })
 })

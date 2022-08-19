@@ -1,4 +1,4 @@
-import {GEO_INFO_STATUSES, GeoLocationInfo, GeoProviderAdapter} from "../../src/lib/interfaces";
+import {GEO_INFO_STATUSES, GeoLocationInfo, GeoProviderAdapter} from "../../lib/interfaces";
 
 export class TestProvider implements GeoProviderAdapter {
   info: GeoLocationInfo = { status: GEO_INFO_STATUSES.success }

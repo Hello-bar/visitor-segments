@@ -54,3 +54,8 @@ export type GeoLocationInfo = {
   timezone?: string,
   mobile?: boolean
 }
+
+export type SegmentsAdapters = {
+  storageAdapter?: StorageAdapterClass,
+  geoAdapter?: GeoProviderAdapter
+}
