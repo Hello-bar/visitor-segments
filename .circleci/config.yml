@@ -12,7 +12,7 @@ aliases:
 
 orbs:
   node: circleci/node@5.0.0
-  codecov: codecov/codecov@3.2.3
+  codecov: codecov/codecov@3.0.0
 
 # Define a job to be invoked later in a workflow.
 # See: https://circleci.com/docs/2.0/configuration-reference/#jobs
@@ -33,6 +33,7 @@ jobs:
           command: yarn test-ci --shard=$(expr $CIRCLE_NODE_INDEX + 1)/$CIRCLE_NODE_TOTAL
       - store_test_results:
           path: reports/junit
+      - codecov/upload    
 
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
@@ -41,8 +42,6 @@ workflows:
     jobs:
       - test-node:
           name: test-node-partial-<< matrix.node-version >>
-          post-steps:
-            - codecov/upload
           matrix:
             parameters:
               node-version: ['14', '16', '18']
