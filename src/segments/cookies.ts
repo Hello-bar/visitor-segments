@@ -43,6 +43,8 @@ function parseKeyValue(cookie: string) {
 }
 
 function cookiesObject() {
+  if(document.cookie.length === 0) return {}
+
   return document.cookie
     .split(';')
     .reduce((res, c) => Object.assign(res, parseKeyValue(c)), {})

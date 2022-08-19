@@ -43,6 +43,11 @@ export class Visitor implements ValueStorageInterface {
     return now()
   }
 
+  clear() {
+    this.data = {}
+    this.save()
+  }
+
   private save(): void {
     this.storage.setValue(this.key, this.data)
   }

@@ -9,7 +9,7 @@ export class FirstVisitDays extends Segment {
   }
 
   setValue(firstVisit: number) {
-    super.setValueOnce(Math.round((this.now() - firstVisit) / DAY));
+    super.setValue(Math.round((this.now() - firstVisit) / DAY));
   }
 
   reset(value: number) {

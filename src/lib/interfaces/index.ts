@@ -29,3 +29,28 @@ export type SegmentsFacade = {
   update(): void
   reset(): void
 }
+
+export interface GeoProviderAdapter {
+  getLocationInfo(): Promise<GeoLocationInfo>
+}
+
+export type GeoProvider = {
+  key?: string | null,
+  new(): GeoProviderAdapter,
+}
+
+export enum GEO_INFO_STATUSES {
+  success = 'success',
+  fail = 'fail'
+}
+
+export type GeoLocationInfo = {
+  status: GEO_INFO_STATUSES,
+  country?: string,
+  countryCode?: string,
+  regionName?: string,
+  region?: string,
+  city?: string,
+  timezone?: string,
+  mobile?: boolean
+}

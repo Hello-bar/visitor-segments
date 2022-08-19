@@ -8,8 +8,12 @@ export class LastVisitDays extends Segment {
     super(SEGMENT_KEYS.LAST_VISIT_DAYS, visitor);
   }
 
-  setValue(lastVisit: number) {
-    super.setValue(Math.round((this.now() - lastVisit) / DAY));
+  setValue(lastVisit?: number) {
+    if (lastVisit) {
+      super.setValue(Math.round((this.now() - lastVisit) / DAY));
+    } else {
+      super.setValue(0);
+    }
   }
 
   reset(value: number) {

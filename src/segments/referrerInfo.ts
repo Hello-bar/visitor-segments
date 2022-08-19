@@ -21,7 +21,7 @@ export default function referrerInfo(): ReferrerInfo | null {
     .substring(0, 150)
 
   const referrerDomain = referrer.replace(/(.*?)\/.*/, '$1')
-  const params = paramsFromString(document.referrer)
+  const params = paramsFromString(referrer.split('?')[1])
   const terms = params.query || params.q || params.search
 
   return {

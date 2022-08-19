@@ -18,7 +18,7 @@ export class Session implements SegmentsFacade {
   }
 
   get count() {
-    return this.#sessions.value
+    return this.#sessions.value || 0
   }
 
   get uuid() {

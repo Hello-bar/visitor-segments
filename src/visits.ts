@@ -27,6 +27,7 @@ export class Visits implements SegmentsFacade {
   }
 
   get firstDate(): any {
+    if(!this.first) return undefined
     return new Date(this.first * 1000)
   }
 
@@ -35,15 +36,16 @@ export class Visits implements SegmentsFacade {
   }
 
   get lastDate(): any {
+    if(!this.last) return undefined
     return new Date(this.last * 1000)
   }
 
   get daysFromFirst(): any {
-    return this.#firstVisitDays.value
+    return this.#firstVisitDays.value || 0
   }
 
   get daysFromLast(): any {
-    return this.#lastVisitDays.value
+    return this.#lastVisitDays.value || 0
   }
 
   get count(): any {
@@ -53,8 +55,8 @@ export class Visits implements SegmentsFacade {
   update(): void {
     this.#firstVisit.setValue()
     this.#firstVisitDays.setValue(this.first)
-    this.#lastVisit.setValue()
     this.#lastVisitDays.setValue(this.last)
+    this.#lastVisit.setValue()
     this.#visits.setValue()
   }
 

@@ -15,7 +15,6 @@ export class SessionUUID extends Segment {
   }
 
   setValue(value?: any) {
-    console.log(this.generateUUID())
     super.setValueOnce(value || this.generateUUID());
   }
 

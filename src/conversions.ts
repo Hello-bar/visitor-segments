@@ -25,6 +25,7 @@ export class Conversions implements SegmentsFacade {
   }
 
   get firstDate(): any {
+    if (!this.first) return undefined
     return new Date(this.first * 1000)
   }
 
@@ -33,6 +34,7 @@ export class Conversions implements SegmentsFacade {
   }
 
   get lastDate(): any {
+    if (!this.last) return undefined
     return new Date(this.last * 1000)
   }
 

@@ -42,8 +42,7 @@ export class Interpolation {
     let match
 
     while ((match = regexp.exec(input)) !== null) {
-      const name = match[0]
-      const [tag, value] = tagAndValue(name)
+      const [tag, value] = tagAndValue(match)
       output = output.replace(tag, value)
     }
 

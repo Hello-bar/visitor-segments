@@ -8,8 +8,9 @@ import {GeoLocation} from "./geolocation";
 import {Referrer} from "./referrer";
 import {Page} from "./page";
 import {Conversions} from "./conversions";
-import {StorageAdapterClass} from "./lib/interfaces";
+import {GeoProvider, GeoProviderAdapter, StorageAdapterClass} from "./lib/interfaces";
 import {Interpolation} from "./interpolation";
+import {IPApiProvider} from "./geo/ipapiProvider";
 
 export class Segments {
   visits: Visits;
@@ -24,7 +25,7 @@ export class Segments {
   readonly #interpolation: Interpolation;
   private custom: Segment;
 
-  constructor(key: string, adapter: StorageAdapterClass) {
+  constructor(key: string, adapter: StorageAdapterClass, geo: GeoProviderAdapter) {
     this.#visitor = new Visitor(key, adapter)
     this.#segments = buildSegments(this.#visitor)
     this.#interpolation = new Interpolation(this)
@@ -32,7 +33,7 @@ export class Segments {
     this.session = new Session(this)
     this.conversions = new Conversions(this)
     this.params = new Params(this)
-    this.geolocation = new GeoLocation(this)
+    this.geolocation = new GeoLocation(this, geo)
     this.referrer = new Referrer(this)
     this.page = new Page(this)
     this.custom = this.getSegmentByKey(SEGMENT_KEYS.CUSTOM)
@@ -71,6 +72,10 @@ export class Segments {
     this.referrer.reset()
     this.page.reset()
     this.conversions.reset()
+  }
+
+  clear() {
+    this.#visitor.clear()
   }
 
   getSegmentByKey(key: SEGMENT_KEYS): Segment {
