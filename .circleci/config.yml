@@ -2,25 +2,47 @@
 # See: https://circleci.com/docs/2.0/configuration-reference
 version: 2.1
 
+aliases:
+  - &install
+    pkg-manager: yarn
+    override-ci-command: yarn install --immutable && yarn build:js
+    cache-path: ~/.yarn/berry/cache
+    include-branch-in-cache-key: false
+    app-dir: ~/segments
+
+orbs:
+  node: circleci/node@5.0.0
+  codecov: codecov/codecov@3.2.3
+
 # Define a job to be invoked later in a workflow.
 # See: https://circleci.com/docs/2.0/configuration-reference/#jobs
 jobs:
-  say-hello:
-    # Specify the execution environment. You can specify an image from Dockerhub or use one of our Convenience Images from CircleCI's Developer Hub.
-    # See: https://circleci.com/docs/2.0/configuration-reference/#docker-machine-macos-windows-executor
-    docker:
-      - image: cimg/base:stable
-    # Add steps to the job
-    # See: https://circleci.com/docs/2.0/configuration-reference/#steps
+  test-node:
+    parameters:
+      node-version:
+        type: string
+    working_directory: ~/segments
+    executor: node/default
+    parallelism: 4
     steps:
       - checkout
+      - node/install:
+          node-version: << parameters.node-version >>
+      - node/install-packages: *install
       - run:
-          name: "Say hello"
-          command: "echo Hello, World!"
+          command: yarn test-ci --shard=$(expr $CIRCLE_NODE_INDEX + 1)/$CIRCLE_NODE_TOTAL
+      - store_test_results:
+          path: reports/junit
 
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
 workflows:
-  say-hello-workflow:
+  build-and-deploy:
     jobs:
-      - say-hello
+      - test-node:
+          name: test-node-partial-<< matrix.node-version >>
+          post-steps:
+            - codecov/upload
+          matrix:
+            parameters:
+              node-version: ['14', '16', '18']
