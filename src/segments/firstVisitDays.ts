@@ -1,7 +1,7 @@
-import {SEGMENT_KEYS} from "../segmentMaps";
-import {Segment} from "../segment";
-import {DAY} from "../lib/dateUtils";
-import {ValueStorageInterface} from "../lib/interfaces";
+import { SEGMENT_KEYS } from '../segmentMaps';
+import { Segment } from '../segment';
+import { DAY } from '../lib/dateUtils';
+import { ValueStorageInterface } from '../lib/interfaces';
 
 export class FirstVisitDays extends Segment {
   constructor(visitor: ValueStorageInterface) {
@@ -13,7 +13,7 @@ export class FirstVisitDays extends Segment {
   }
 
   reset(value: number) {
-    super.reset()
-    this.setValue(value)
+    super.reset();
+    this.setValue(value);
   }
 }

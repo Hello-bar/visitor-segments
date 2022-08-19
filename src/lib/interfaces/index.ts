@@ -13,9 +13,7 @@ export interface StorageAdapter {
   removeValue(key: string): void;
 }
 
-export type StorageAdapterClass = {
-  new(): StorageAdapter
-}
+export type StorageAdapterClass = new () => StorageAdapter;
 
 export type ValueStorageInterface = {
   getValue(key: string): any;
@@ -23,39 +21,39 @@ export type ValueStorageInterface = {
   setValueOnce(key: string, value: any): void;
   removeValue(key: string): void;
   now(): number;
-}
+};
 
 export type SegmentsFacade = {
-  update(): void
-  reset(): void
-}
+  update(): void;
+  reset(): void;
+};
 
 export interface GeoProviderAdapter {
-  getLocationInfo(): Promise<GeoLocationInfo>
+  getLocationInfo(): Promise<GeoLocationInfo>;
 }
 
 export type GeoProvider = {
-  key?: string | null,
-  new(): GeoProviderAdapter,
-}
+  key?: string | null;
+  new (): GeoProviderAdapter;
+};
 
 export enum GEO_INFO_STATUSES {
   success = 'success',
-  fail = 'fail'
+  fail = 'fail',
 }
 
 export type GeoLocationInfo = {
-  status: GEO_INFO_STATUSES,
-  country?: string,
-  countryCode?: string,
-  regionName?: string,
-  region?: string,
-  city?: string,
-  timezone?: string,
-  mobile?: boolean
-}
+  status: GEO_INFO_STATUSES;
+  country?: string;
+  countryCode?: string;
+  regionName?: string;
+  region?: string;
+  city?: string;
+  timezone?: string;
+  mobile?: boolean;
+};
 
 export type SegmentsAdapters = {
-  storageAdapter?: StorageAdapterClass,
-  geoAdapter?: GeoProviderAdapter
-}
+  storageAdapter?: StorageAdapterClass;
+  geoAdapter?: GeoProviderAdapter;
+};

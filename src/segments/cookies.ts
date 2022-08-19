@@ -1,6 +1,6 @@
-import {SEGMENT_KEYS} from "../segmentMaps";
-import {Segment} from "../segment";
-import {ValueStorageInterface} from "../lib/interfaces"
+import { SEGMENT_KEYS } from '../segmentMaps';
+import { Segment } from '../segment';
+import { ValueStorageInterface } from '../lib/interfaces';
 
 export class Cookies extends Segment {
   constructor(visitor: ValueStorageInterface) {
@@ -8,7 +8,7 @@ export class Cookies extends Segment {
   }
 
   get value(): {} | null {
-    return super.value
+    return super.value;
   }
 
   setValue(value?: any) {
@@ -18,34 +18,32 @@ export class Cookies extends Segment {
   }
 
   protected defaultValue(): {} {
-    return cookiesObject()
+    return cookiesObject();
   }
 }
 
 function booleanOrVal(val: string) {
   try {
-    if (typeof JSON.parse(val) === "boolean") {
-      return val.toString()
+    if (typeof JSON.parse(val) === 'boolean') {
+      return val.toString();
     } else {
-      return JSON.parse(val)
+      return JSON.parse(val);
     }
   } catch (e) {
-    return val
+    return val;
   }
 }
 
 function parseKeyValue(cookie: string) {
-  const [key, val] = cookie.trim().split('=').map(decodeURIComponent)
+  const [key, val] = cookie.trim().split('=').map(decodeURIComponent);
   const allNumbers = (str: string) => /^\d+$/.test(str);
   return {
-    [key]: allNumbers(val) ? val : booleanOrVal(val)
-  }
+    [key]: allNumbers(val) ? val : booleanOrVal(val),
+  };
 }
 
 function cookiesObject() {
-  if(document.cookie.length === 0) return {}
+  if (document.cookie.length === 0) return {};
 
-  return document.cookie
-    .split(';')
-    .reduce((res, c) => Object.assign(res, parseKeyValue(c)), {})
+  return document.cookie.split(';').reduce((res, c) => Object.assign(res, parseKeyValue(c)), {});
 }

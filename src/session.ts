@@ -1,10 +1,10 @@
-import {Segments} from "./segments";
-import {SEGMENT_KEYS} from "./segmentMaps";
-import {Sessions} from "./segments/sessions";
-import {ValueStorage} from "./valueStorage";
-import {SessionUUID} from "./segments/sessionUUID";
-import {LocalStorageAdapter} from "./valueStorage/localStorageAdapter";
-import {SegmentsFacade} from "./lib/interfaces";
+import { Segments } from './segments';
+import { SEGMENT_KEYS } from './segmentMaps';
+import { Sessions } from './segments/sessions';
+import { ValueStorage } from './valueStorage';
+import { SessionUUID } from './segments/sessionUUID';
+import { LocalStorageAdapter } from './valueStorage/localStorageAdapter';
+import { SegmentsFacade } from './lib/interfaces';
 
 export class Session implements SegmentsFacade {
   #sessions: Sessions;
@@ -12,37 +12,37 @@ export class Session implements SegmentsFacade {
   #sessionHolder: ValueStorage;
 
   constructor(segments: Segments) {
-    this.#sessions = segments.getSegmentByKey(SEGMENT_KEYS.SESSIONS)
-    this.#sessionUUID = segments.getSegmentByKey(SEGMENT_KEYS.SESSION_UUID) as SessionUUID
-    this.#sessionHolder = new ValueStorage(new LocalStorageAdapter(), 60)
+    this.#sessions = segments.getSegmentByKey(SEGMENT_KEYS.SESSIONS);
+    this.#sessionUUID = segments.getSegmentByKey(SEGMENT_KEYS.SESSION_UUID) as SessionUUID;
+    this.#sessionHolder = new ValueStorage(new LocalStorageAdapter(), 60);
   }
 
   get count() {
-    return this.#sessions.value || 0
+    return this.#sessions.value || 0;
   }
 
   get uuid() {
-    return this.#sessionUUID.value
+    return this.#sessionUUID.value;
   }
 
   end() {
-    this.#sessionHolder.removeValue(this.#sessionUUID.value)
-    this.#sessionUUID.reset()
+    this.#sessionHolder.removeValue(this.#sessionUUID.value);
+    this.#sessionUUID.reset();
   }
 
   update() {
-    this.#sessionUUID.setValue()
+    this.#sessionUUID.setValue();
     if (!this.#sessionHolder.getValue(this.#sessionUUID.value)) {
-      this.#sessionUUID.reset()
-      this.#sessionHolder.setValue(this.#sessionUUID.value, new Date().getTime())
-      this.#sessions.setValue()
+      this.#sessionUUID.reset();
+      this.#sessionHolder.setValue(this.#sessionUUID.value, new Date().getTime());
+      this.#sessions.setValue();
     } else if (this.count === 0) {
-      this.#sessions.setValue()
+      this.#sessions.setValue();
     }
   }
 
   reset() {
-    this.#sessions.reset()
-    this.#sessionUUID.reset()
+    this.#sessions.reset();
+    this.#sessionUUID.reset();
   }
 }

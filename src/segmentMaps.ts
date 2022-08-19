@@ -1,40 +1,40 @@
-import {FirstVisit} from "./segments/firstVisit";
-import {Segment} from "./segment";
-import {LastVisit} from "./segments/lastVisit";
-import {FirstVisitDays} from "./segments/firstVisitDays";
-import {LastVisitDays} from "./segments/lastVisitDays";
-import {Visits} from "./segments/visits";
-import {AdSource} from "./segments/adSource";
-import {AdCampaign} from "./segments/adCampaign";
-import {AdContent} from "./segments/adContent";
-import {AdMedium} from "./segments/adMedium";
-import {AdTerm} from "./segments/adTerm";
-import {Params} from "./segments/params";
-import {PreviousPage} from "./segments/previousPage";
-import {Referrer} from "./segments/referrer";
-import {ReferrerDomain} from "./segments/referrerDomain";
-import {ReferrerTerms} from "./segments/referrerTerms";
-import {PagePath} from "./segments/pagePath";
-import {UrlKeywords} from "./segments/urlKeywords";
-import {DateSegment} from "./segments/dateSegment";
-import {DayOfWeek} from "./segments/dayOfWeek";
-import {Device} from "./segments/device";
-import {WordpressTags} from "./segments/wordpressTags";
-import {Conversions} from "./segments/conversions";
-import {FirstConversion} from "./segments/firstConversion";
-import {LastConversion} from "./segments/lastConversion";
-import {City} from "./segments/city";
-import {Country} from "./segments/country";
-import {Region} from "./segments/region";
-import {Cookies} from "./segments/cookies";
-import {Sessions} from "./segments/sessions";
-import {OriginalReferrer} from "./segments/originalReferrer";
-import {Custom} from "./segments/custom";
-import {ValueStorageInterface} from "./lib/interfaces";
-import {SessionUUID} from "./segments/sessionUUID";
+import { FirstVisit } from './segments/firstVisit';
+import { Segment } from './segment';
+import { LastVisit } from './segments/lastVisit';
+import { FirstVisitDays } from './segments/firstVisitDays';
+import { LastVisitDays } from './segments/lastVisitDays';
+import { Visits } from './segments/visits';
+import { AdSource } from './segments/adSource';
+import { AdCampaign } from './segments/adCampaign';
+import { AdContent } from './segments/adContent';
+import { AdMedium } from './segments/adMedium';
+import { AdTerm } from './segments/adTerm';
+import { Params } from './segments/params';
+import { PreviousPage } from './segments/previousPage';
+import { Referrer } from './segments/referrer';
+import { ReferrerDomain } from './segments/referrerDomain';
+import { ReferrerTerms } from './segments/referrerTerms';
+import { PagePath } from './segments/pagePath';
+import { UrlKeywords } from './segments/urlKeywords';
+import { DateSegment } from './segments/dateSegment';
+import { DayOfWeek } from './segments/dayOfWeek';
+import { Device } from './segments/device';
+import { WordpressTags } from './segments/wordpressTags';
+import { Conversions } from './segments/conversions';
+import { FirstConversion } from './segments/firstConversion';
+import { LastConversion } from './segments/lastConversion';
+import { City } from './segments/city';
+import { Country } from './segments/country';
+import { Region } from './segments/region';
+import { Cookies } from './segments/cookies';
+import { Sessions } from './segments/sessions';
+import { OriginalReferrer } from './segments/originalReferrer';
+import { Custom } from './segments/custom';
+import { ValueStorageInterface } from './lib/interfaces';
+import { SessionUUID } from './segments/sessionUUID';
 
-type SegmentClassMap = { [key: string]: new(visitor: ValueStorageInterface) => Segment }
-type SegmentMap = { [key: string]: Segment }
+type SegmentClassMap = { [key: string]: new (visitor: ValueStorageInterface) => Segment };
+type SegmentMap = { [key: string]: Segment };
 
 export enum SEGMENT_KEYS {
   FIRST_VISIT = 'fv',
@@ -68,7 +68,7 @@ export enum SEGMENT_KEYS {
   CITY = 'gl_cty',
   COUNTRY = 'gl_ctr',
   REGION = 'gl_rgn',
-  CUSTOM = 'cs'
+  CUSTOM = 'cs',
 }
 
 export const SEGMENTS: SegmentClassMap = {
@@ -103,12 +103,12 @@ export const SEGMENTS: SegmentClassMap = {
   [SEGMENT_KEYS.CITY]: City,
   [SEGMENT_KEYS.COUNTRY]: Country,
   [SEGMENT_KEYS.REGION]: Region,
-  [SEGMENT_KEYS.CUSTOM]: Custom
-}
+  [SEGMENT_KEYS.CUSTOM]: Custom,
+};
 
 export const buildSegments = (visitor: ValueStorageInterface) => {
   return Object.keys(SEGMENTS).reduce((map: SegmentMap, key: string) => {
-    const klass = SEGMENTS[key]
-    return {[key]: new klass(visitor), ...map}
-  }, {})
-}
+    const klass = SEGMENTS[key];
+    return { [key]: new klass(visitor), ...map };
+  }, {});
+};

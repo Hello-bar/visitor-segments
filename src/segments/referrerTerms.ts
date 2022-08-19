@@ -1,6 +1,6 @@
-import {SEGMENT_KEYS} from "../segmentMaps";
-import {Segment} from "../segment";
-import {ValueStorageInterface} from "../lib/interfaces"
+import { SEGMENT_KEYS } from '../segmentMaps';
+import { Segment } from '../segment';
+import { ValueStorageInterface } from '../lib/interfaces';
 
 export class ReferrerTerms extends Segment {
   constructor(visitor: ValueStorageInterface) {

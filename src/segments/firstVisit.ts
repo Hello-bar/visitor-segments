@@ -1,6 +1,6 @@
-import {SEGMENT_KEYS} from "../segmentMaps";
-import {Segment} from "../segment";
-import {ValueStorageInterface} from "../lib/interfaces";
+import { SEGMENT_KEYS } from '../segmentMaps';
+import { Segment } from '../segment';
+import { ValueStorageInterface } from '../lib/interfaces';
 
 export class FirstVisit extends Segment {
   constructor(visitor: ValueStorageInterface) {
@@ -12,7 +12,7 @@ export class FirstVisit extends Segment {
   }
 
   reset() {
-    super.reset()
-    this.setValue()
+    super.reset();
+    this.setValue();
   }
 }

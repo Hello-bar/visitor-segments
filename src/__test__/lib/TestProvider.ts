@@ -1,14 +1,14 @@
-import {GEO_INFO_STATUSES, GeoLocationInfo, GeoProviderAdapter} from "../../lib/interfaces";
+import { GEO_INFO_STATUSES, GeoLocationInfo, GeoProviderAdapter } from '../../lib/interfaces';
 
 export class TestProvider implements GeoProviderAdapter {
-  info: GeoLocationInfo = { status: GEO_INFO_STATUSES.success }
+  info: GeoLocationInfo = { status: GEO_INFO_STATUSES.success };
 
-  set(key: any, value:string) {
+  set(key: any, value: string) {
     // @ts-ignore
-    this.info[key] = value
+    this.info[key] = value;
   }
 
   async getLocationInfo() {
-    return this.info
+    return this.info;
   }
 }

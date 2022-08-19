@@ -1,6 +1,6 @@
-import {SEGMENT_KEYS} from "../segmentMaps";
-import {Segment} from "../segment";
-import {ValueStorageInterface} from "../lib/interfaces"
+import { SEGMENT_KEYS } from '../segmentMaps';
+import { Segment } from '../segment';
+import { ValueStorageInterface } from '../lib/interfaces';
 
 declare global {
   interface Window {
@@ -14,11 +14,11 @@ export class WordpressTags extends Segment {
   }
 
   get value(): string[] {
-    return super.value || []
+    return super.value || [];
   }
 
   setValue(value?: any) {
-    const tags = value || this.defaultValue()
+    const tags = value || this.defaultValue();
 
     if (tags?.length && tags?.length > 0) {
       super.setValue(tags);
@@ -26,6 +26,6 @@ export class WordpressTags extends Segment {
   }
 
   protected defaultValue() {
-    return window._hellobar_wordpress_tags || []
+    return window._hellobar_wordpress_tags || [];
   }
 }

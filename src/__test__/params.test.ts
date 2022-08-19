@@ -2,37 +2,35 @@
  * @jest-environment jsdom
  * @jest-environment-options {"url": "https://test.io/?utm_term=term&utm_campaign=campaign&utm_content=content&utm_medium=medium&utm_source=source&custom_param=foo"}
  */
-import {segments} from "./lib/segments";
+import { segments } from './lib/segments';
 
-const firstVisit: Date = new Date('2020-01-01T00:00')
+const firstVisit: Date = new Date('2020-01-01T00:00');
 
 describe('Segments.params', () => {
   beforeAll(() => {
-    segments.clear()
-    jest
-      .useFakeTimers()
-      .setSystemTime(firstVisit);
-  })
-  beforeAll(async () => await segments.visit())
+    segments.clear();
+    jest.useFakeTimers().setSystemTime(firstVisit);
+  });
+  beforeAll(async () => await segments.visit());
 
   it('has .term', () => {
-    expect(segments.params.term).toEqual('term')
+    expect(segments.params.term).toEqual('term');
   });
 
   it('has .campaign', () => {
-    expect(segments.params.campaign).toEqual('campaign')
+    expect(segments.params.campaign).toEqual('campaign');
   });
 
   it('has .content', () => {
-    expect(segments.params.content).toEqual('content')
+    expect(segments.params.content).toEqual('content');
   });
 
   it('has .medium', () => {
-    expect(segments.params.medium).toEqual('medium')
+    expect(segments.params.medium).toEqual('medium');
   });
 
   it('has .source', () => {
-    expect(segments.params.source).toEqual('source')
+    expect(segments.params.source).toEqual('source');
   });
 
   it('has .params', () => {
@@ -42,7 +40,7 @@ describe('Segments.params', () => {
       utm_content: 'content',
       utm_medium: 'medium',
       utm_source: 'source',
-      custom_param: 'foo'
-    })
+      custom_param: 'foo',
+    });
   });
-})
+});

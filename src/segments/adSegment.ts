@@ -1,4 +1,4 @@
-import {Segment} from "../segment";
+import { Segment } from '../segment';
 
 export class AdSegment extends Segment {
   setValue(value: any) {

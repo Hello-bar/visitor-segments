@@ -1,6 +1,6 @@
-import {SEGMENT_KEYS} from "../segmentMaps";
-import {Segment} from "../segment";
-import {ValueStorageInterface} from "../lib/interfaces"
+import { SEGMENT_KEYS } from '../segmentMaps';
+import { Segment } from '../segment';
+import { ValueStorageInterface } from '../lib/interfaces';
 
 export class DayOfWeek extends Segment {
   constructor(visitor: ValueStorageInterface) {
@@ -8,11 +8,11 @@ export class DayOfWeek extends Segment {
   }
 
   get value(): number {
-    return super.value
+    return super.value;
   }
 
   setValue(value?: any) {
-    const nowDate = new Date()
+    const nowDate = new Date();
     super.setValue(value || nowDate.getDay());
   }
 }

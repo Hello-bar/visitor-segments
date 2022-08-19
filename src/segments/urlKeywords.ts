@@ -1,6 +1,6 @@
-import {SEGMENT_KEYS} from "../segmentMaps";
-import {Segment} from "../segment";
-import {ValueStorageInterface} from "../lib/interfaces"
+import { SEGMENT_KEYS } from '../segmentMaps';
+import { Segment } from '../segment';
+import { ValueStorageInterface } from '../lib/interfaces';
 
 export class UrlKeywords extends Segment {
   constructor(visitor: ValueStorageInterface) {
@@ -8,16 +8,14 @@ export class UrlKeywords extends Segment {
   }
 
   get value(): string[] {
-    return super.value || []
+    return super.value || [];
   }
 
   setValue(value?: any) {
-    super.setValue(value || this.defaultValue())
+    super.setValue(value || this.defaultValue());
   }
 
   protected defaultValue(): any {
-    return (document.location.pathname + document.location.search)
-      .split(/\W/)
-      .filter(a => a !== '')
+    return (document.location.pathname + document.location.search).split(/\W/).filter((a) => a !== '');
   }
 }

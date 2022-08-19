@@ -1,9 +1,9 @@
-import {Segments} from "./segments";
-import {SEGMENT_KEYS} from "./segmentMaps";
-import {Conversions as ConversionsSegment} from "./segments/conversions";
-import {FirstConversion} from "./segments/firstConversion";
-import {LastConversion} from "./segments/lastConversion";
-import {SegmentsFacade} from "./lib/interfaces";
+import { Segments } from './segments';
+import { SEGMENT_KEYS } from './segmentMaps';
+import { Conversions as ConversionsSegment } from './segments/conversions';
+import { FirstConversion } from './segments/firstConversion';
+import { LastConversion } from './segments/lastConversion';
+import { SegmentsFacade } from './lib/interfaces';
 
 export class Conversions implements SegmentsFacade {
   #total: ConversionsSegment;
@@ -11,42 +11,42 @@ export class Conversions implements SegmentsFacade {
   #last: LastConversion;
 
   constructor(segments: Segments) {
-    this.#total = segments.getSegmentByKey(SEGMENT_KEYS.CONVERSIONS)
-    this.#first = segments.getSegmentByKey(SEGMENT_KEYS.FIRST_CONVERSION)
-    this.#last = segments.getSegmentByKey(SEGMENT_KEYS.LAST_CONVERSION)
+    this.#total = segments.getSegmentByKey(SEGMENT_KEYS.CONVERSIONS);
+    this.#first = segments.getSegmentByKey(SEGMENT_KEYS.FIRST_CONVERSION);
+    this.#last = segments.getSegmentByKey(SEGMENT_KEYS.LAST_CONVERSION);
   }
 
   get count(): any {
-    return this.#total.value
+    return this.#total.value;
   }
 
   get first(): any {
-    return this.#first.value
+    return this.#first.value;
   }
 
   get firstDate(): any {
-    if (!this.first) return undefined
-    return new Date(this.first * 1000)
+    if (!this.first) return undefined;
+    return new Date(this.first * 1000);
   }
 
   get last(): any {
-    return this.#last.value
+    return this.#last.value;
   }
 
   get lastDate(): any {
-    if (!this.last) return undefined
-    return new Date(this.last * 1000)
+    if (!this.last) return undefined;
+    return new Date(this.last * 1000);
   }
 
   update(): void {
-    this.#first.setValue()
-    this.#last.setValue()
-    this.#total.setValue()
+    this.#first.setValue();
+    this.#last.setValue();
+    this.#total.setValue();
   }
 
   reset(): void {
-    this.#first.reset()
-    this.#last.reset()
-    this.#total.reset()
+    this.#first.reset();
+    this.#last.reset();
+    this.#total.reset();
   }
 }

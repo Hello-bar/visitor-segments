@@ -1,3 +1,3 @@
-export default function paramsFromString(string: string) {
-  return Object.fromEntries(new URLSearchParams(string));
+export default function paramsFromString(value: string) {
+  return Object.fromEntries(new URLSearchParams(value));
 }

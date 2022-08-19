@@ -1,6 +1,6 @@
-import {SEGMENT_KEYS} from "../segmentMaps";
-import {Segment} from "../segment";
-import {ValueStorageInterface} from "../lib/interfaces"
+import { SEGMENT_KEYS } from '../segmentMaps';
+import { Segment } from '../segment';
+import { ValueStorageInterface } from '../lib/interfaces';
 
 export class DateSegment extends Segment {
   constructor(visitor: ValueStorageInterface) {
@@ -14,17 +14,13 @@ export class DateSegment extends Segment {
 
 // returns date in format of 'YYYY-MM-DD'
 function yearMonthDay(date: Date) {
-  function zeropad(string: string): string {
-    const length = Math.max(string.length, 2)
-    return string.length >= length ? string : `0${string}`
+  function zeropad(value: string): string {
+    const length = Math.max(value.length, 2);
+    return value.length >= length ? value : `0${value}`;
   }
 
-  const month = date.getMonth() + 1
-  const day = date.getDate()
+  const month = date.getMonth() + 1;
+  const day = date.getDate();
 
-  return [
-    date.getFullYear(),
-    zeropad(month.toString()),
-    zeropad(day.toString())
-  ].join('-')
+  return [date.getFullYear(), zeropad(month.toString()), zeropad(day.toString())].join('-');
 }
