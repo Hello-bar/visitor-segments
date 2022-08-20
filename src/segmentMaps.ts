@@ -1,5 +1,4 @@
 import { FirstVisit } from './segments/firstVisit';
-import { Segment } from './segment';
 import { LastVisit } from './segments/lastVisit';
 import { FirstVisitDays } from './segments/firstVisitDays';
 import { LastVisitDays } from './segments/lastVisitDays';
@@ -30,15 +29,12 @@ import { Cookies } from './segments/cookies';
 import { Sessions } from './segments/sessions';
 import { OriginalReferrer } from './segments/originalReferrer';
 import { Custom } from './segments/custom';
-import { ValueStorageInterface } from './lib/interfaces';
+import {SegmentClassMap, SegmentMap, ValueStorageInterface} from './lib/interfaces';
 import { SessionUUID } from './segments/sessionUUID';
 import { RegionName } from './segments/regionName';
 import { CountryName } from './segments/countryName';
 import { MobileCell } from './segments/mobileCell';
 import { Timezone } from './segments/timezone';
-
-type SegmentClassMap = { [key: string]: new (visitor: ValueStorageInterface) => Segment };
-type SegmentMap = { [key: string]: Segment };
 
 export enum SEGMENT_KEYS {
   FIRST_VISIT = 'fv',
@@ -118,9 +114,9 @@ export const SEGMENTS: SegmentClassMap = {
   [SEGMENT_KEYS.CUSTOM]: Custom,
 };
 
-export const buildSegments = (visitor: ValueStorageInterface) => {
-  return Object.keys(SEGMENTS).reduce((map: SegmentMap, key: string) => {
-    const klass = SEGMENTS[key];
+export const buildSegments = (segmentsMap: SegmentClassMap, visitor: ValueStorageInterface) => {
+  return Object.keys(segmentsMap).reduce((map: SegmentMap, key: string) => {
+    const klass = segmentsMap[key];
     return { [key]: new klass(visitor), ...map };
   }, {});
 };

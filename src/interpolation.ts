@@ -1,9 +1,9 @@
-import { Segments } from './segments';
+import {AbstractSegments} from "./abstractSegments";
 
 export class Interpolation {
-  readonly #segments: Segments;
+  readonly #segments: AbstractSegments;
 
-  constructor(segments: Segments) {
+  constructor(segments: AbstractSegments) {
     this.#segments = segments;
   }
 

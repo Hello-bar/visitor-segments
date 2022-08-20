@@ -1,15 +1,15 @@
+import {Segment} from "../../segment";
+import {SEGMENT_KEYS} from "../../segmentMaps";
+
 export interface StoredValueInterface {
   value: any;
   expiration: Date;
-
   isExpired(): boolean;
 }
 
 export interface StorageAdapter {
   setValue(key: string, value: any): void;
-
   getValue(key: string): string | undefined;
-
   removeValue(key: string): void;
 }
 
@@ -56,4 +56,20 @@ export type GeoLocationInfo = {
 export type SegmentsAdapters = {
   storageAdapter?: StorageAdapterClass;
   geoAdapter?: GeoProviderAdapter;
+  segmentsMap?: SegmentClassMap
 };
+
+export interface SegmentsInterface {
+  onUpdate(handler: (key: string, value: string) => void): void;
+  interpolate(input: string): string;
+  set(key: string, value: any): void;
+  get(key: string): any;
+  visit(): Promise<any>;
+  convert(): void;
+  reset(): void;
+  clear(): void;
+  getSegmentByKey(key: SEGMENT_KEYS): Segment;
+}
+
+export type SegmentClassMap = { [key: string]: new (visitor: ValueStorageInterface) => Segment };
+export type SegmentMap = { [key: string]: Segment };
