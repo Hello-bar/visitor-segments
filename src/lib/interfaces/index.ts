@@ -1,5 +1,5 @@
-import {Segment} from "../../segment";
-import {SEGMENT_KEYS} from "../../segmentMaps";
+import { Segment } from '../../segment';
+import { SEGMENT_KEYS } from '../../segmentMaps';
 
 export interface StoredValueInterface {
   value: any;
@@ -56,7 +56,7 @@ export type GeoLocationInfo = {
 export type SegmentsAdapters = {
   storageAdapter?: StorageAdapterClass;
   geoAdapter?: GeoProviderAdapter;
-  segmentsMap?: SegmentClassMap
+  segmentsMap?: SegmentClassMap;
 };
 
 export interface SegmentsInterface {

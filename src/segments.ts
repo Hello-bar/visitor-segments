@@ -7,7 +7,7 @@ import { Page } from './page';
 import { Conversions } from './conversions';
 import { SegmentsAdapters } from './lib/interfaces';
 import { IPApiProvider } from './geo/ipapiProvider';
-import {AbstractSegments} from "./abstractSegments";
+import { AbstractSegments } from './abstractSegments';
 
 export class Segments extends AbstractSegments {
   visits: Visits;
@@ -20,7 +20,7 @@ export class Segments extends AbstractSegments {
 
   constructor(scope: string, options?: SegmentsAdapters) {
     const geoAdapter = options?.geoAdapter || new IPApiProvider();
-    super(scope, options)
+    super(scope, options);
 
     this.visits = new Visits(this);
     this.session = new Session(this);
@@ -32,7 +32,7 @@ export class Segments extends AbstractSegments {
   }
 
   async visit() {
-    await super.visit()
+    await super.visit();
     this.visits.update();
     this.session.update();
     this.params.update();
@@ -46,7 +46,7 @@ export class Segments extends AbstractSegments {
   }
 
   reset(): void {
-    super.reset()
+    super.reset();
     this.geolocation.reset();
     this.visits.reset();
     this.session.reset();
@@ -57,6 +57,6 @@ export class Segments extends AbstractSegments {
   }
 
   clear() {
-    super.clear()
+    super.clear();
   }
 }

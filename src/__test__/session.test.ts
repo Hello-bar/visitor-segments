@@ -50,12 +50,12 @@ describe('Segments.session', () => {
     });
     beforeAll(async () => await segments.visit());
 
-    it('starts new session on next visit', () => {
+    it('starts new session on next visit', async () => {
       segments.session.end();
       expect(segments.session.count).toEqual(3);
-      segments.visit();
+      await segments.visit();
       expect(segments.session.count).toEqual(4);
-      segments.visit();
+      await segments.visit();
       expect(segments.session.count).toEqual(4);
     });
   });

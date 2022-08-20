@@ -43,12 +43,12 @@ describe('Segments.page', () => {
   });
 
   describe('with cookies', () => {
-    it('.cookies returns an object', () => {
+    it('.cookies returns an object', async () => {
       document.cookie = 'key=value;';
       document.cookie = 'key2=value2;';
       document.cookie = 'bool=true;';
       document.cookie = 'num=1;';
-      segments.visit();
+      await segments.visit();
       expect(segments.page.cookies).toEqual({
         key: 'value',
         key2: 'value2',

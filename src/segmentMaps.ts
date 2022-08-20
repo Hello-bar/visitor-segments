@@ -29,7 +29,7 @@ import { Cookies } from './segments/cookies';
 import { Sessions } from './segments/sessions';
 import { OriginalReferrer } from './segments/originalReferrer';
 import { Custom } from './segments/custom';
-import {SegmentClassMap, SegmentMap, ValueStorageInterface} from './lib/interfaces';
+import { SegmentClassMap, SegmentMap, ValueStorageInterface } from './lib/interfaces';
 import { SessionUUID } from './segments/sessionUUID';
 import { RegionName } from './segments/regionName';
 import { CountryName } from './segments/countryName';

@@ -1,19 +1,19 @@
 import { Visitor } from './visitor';
-import {buildSegments, SEGMENTS} from './segmentMaps';
+import { buildSegments, SEGMENTS } from './segmentMaps';
 import { Segment } from './segment';
-import {SegmentsAdapters, SegmentsInterface} from './lib/interfaces';
+import { SegmentsAdapters, SegmentsInterface } from './lib/interfaces';
 import { Interpolation } from './interpolation';
 import { LocalStorageAdapter } from './valueStorage/localStorageAdapter';
-import {Custom} from "./segments/custom";
+import { Custom } from './segments/custom';
 
-export class AbstractSegments implements SegmentsInterface {
+export abstract class AbstractSegments implements SegmentsInterface {
   readonly #segments: { [key: string]: Segment };
   readonly #visitor: Visitor;
   readonly #interpolation: Interpolation;
   readonly #handlers: ((key: string, value: string) => void)[] = [];
   readonly #custom: Segment;
 
-  constructor(scope: string, options?: SegmentsAdapters) {
+  protected constructor(scope: string, options?: SegmentsAdapters) {
     const storageAdapter = options?.storageAdapter || LocalStorageAdapter;
 
     this.#visitor = new Visitor(scope, storageAdapter);
@@ -40,14 +40,15 @@ export class AbstractSegments implements SegmentsInterface {
   }
 
   async visit() {
-    return new Promise<void>((resolve, _reject) => { resolve() })
+    return new Promise<void>((resolve, _reject) => {
+      resolve();
+    });
   }
 
-  convert(): void {
-  }
+  abstract convert(): void;
 
   reset(): void {
-    this.#custom.reset()
+    this.#custom.reset();
   }
 
   clear() {

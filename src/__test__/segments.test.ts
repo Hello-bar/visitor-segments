@@ -55,22 +55,22 @@ describe('Segments', () => {
   });
 
   describe('interpolation', () => {
-    it('', () => {
+    it('', async () => {
       segments.set('name', 'Anton');
       expect(segments.interpolate('%{name}')).toEqual('Anton');
-      segments.visit();
+      await segments.visit();
       expect(segments.interpolate('%{name}, %{visits.count}')).toEqual('Anton, 1');
       expect(segments.interpolate('%{name} %{undefined}')).toEqual('Anton ');
     });
   });
 
   describe('clear', () => {
-    it('delete all data', () => {
-      segments.visit();
+    it('delete all data', async () => {
+      await segments.visit();
       expect(segments.visits.count).toEqual(1);
       segments.clear();
       expect(segments.visits.count).toEqual(0);
-      segments.visit();
+      await segments.visit();
       expect(segments.visits.count).toEqual(1);
       segments.clear();
     });
