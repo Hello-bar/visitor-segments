@@ -57,10 +57,10 @@ describe('Segments', () => {
   describe('interpolation', () => {
     it('', async () => {
       segments.set('name', 'Anton');
-      expect(segments.interpolate('%{name}')).toEqual('Anton');
+      expect(segments.interpolate('{{name}}')).toEqual('Anton');
       await segments.visit();
-      expect(segments.interpolate('%{name}, %{visits.count}')).toEqual('Anton, 1');
-      expect(segments.interpolate('%{name} %{undefined}')).toEqual('Anton ');
+      expect(segments.interpolate('{{name}}, {{visits.count}}')).toEqual('Anton, 1');
+      expect(segments.interpolate('{{name}} {{undefined}}')).toEqual('Anton ');
     });
   });
 
