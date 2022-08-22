@@ -9,5 +9,6 @@ export { SEGMENT_KEYS } from './segmentMaps';
 export { IPApiProvider } from './geo/ipapiProvider';
 export { Visitor } from './visitor';
 export { AbstractSegments } from './abstractSegments';
+export { Segments }
 
 export default Segments;
