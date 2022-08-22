@@ -19,7 +19,7 @@ export class Interpolation {
   //    segments.set('name', 'Anton')
   //    customTags("%{name}") #> "Anton"
   private customTags(input: string) {
-    return this.runMatches(input, /%{(\w+)}/g, (name: RegExpExecArray) => {
+    return this.runMatches(input, /{{(\w+)}}/g, (name: RegExpExecArray) => {
       const [tag, key] = name;
       const value = this.getCustomValue(key);
       return [tag, value];
@@ -30,7 +30,7 @@ export class Interpolation {
   //    segments.visits.count => 999
   //    systemTags("%{visits.count}") #> "999"
   private systemTags(input: string) {
-    return this.runMatches(input, /%{(\w+)\.(\w+)}/g, (name: RegExpExecArray) => {
+    return this.runMatches(input, /{{(\w+)\.(\w+)}}/g, (name: RegExpExecArray) => {
       const [tag, module, key] = name;
       const value = this.getModuleValue(module, key);
       return [tag, value];
