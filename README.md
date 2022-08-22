@@ -42,5 +42,9 @@ Call the `visit` method to set/increment all the segments
 ```js
   await segments.visit()
   segments.visits.count == 1
+  await segments.visit()
+  segments.visits.count == 2
   segments.geolocation.city == 'Miami'
+  segments.page.path == window.location.pathname
+  segments.page.device == 'computer'
 ```
