@@ -13,7 +13,7 @@ export class Custom extends Segment {
     return super.value || {};
   }
 
-  setValue(key:string, value?:any):void {
+  setValue(key: string, value?: any): void {
     if (this.value[key] !== value) {
       super.setValue({ ...this.value, [key]: value });
       this.#handlers.forEach((handler) => handler.call(handler.prototype, key, value));

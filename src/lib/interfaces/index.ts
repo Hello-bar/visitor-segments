@@ -32,7 +32,7 @@ export interface GeoProviderAdapter {
   getLocationInfo(): Promise<GeoLocationInfo>;
 }
 
-export type UpdateKeyHandler = (key: string, value: string) => void
+export type UpdateKeyHandler = (key: string, value: string) => void;
 export interface DataStorage {
   set(key: string, value: any): void;
   get(key: string): string | number;

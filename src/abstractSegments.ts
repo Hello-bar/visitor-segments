@@ -1,7 +1,7 @@
 import { Visitor } from './visitor';
 import { buildSegments, SEGMENTS } from './segmentMaps';
 import { Segment } from './segment';
-import {DataStorage, SegmentsAdapters, SegmentsInterface} from './lib/interfaces';
+import { DataStorage, SegmentsAdapters, SegmentsInterface } from './lib/interfaces';
 import { Interpolation } from './interpolation';
 import { LocalStorageAdapter } from './valueStorage/localStorageAdapter';
 import { Custom } from './segments/custom';
@@ -15,7 +15,7 @@ export abstract class AbstractSegments implements SegmentsInterface {
 
   protected constructor(scope: string, options?: SegmentsAdapters) {
     const storageAdapter = options?.storageAdapter || LocalStorageAdapter;
-    this.#storage = options?.extraStorage
+    this.#storage = options?.extraStorage;
     this.#visitor = new Visitor(scope, storageAdapter);
     this.#segments = buildSegments(options?.segmentsMap || SEGMENTS, this.#visitor);
     this.#interpolation = new Interpolation(this);
@@ -27,8 +27,8 @@ export abstract class AbstractSegments implements SegmentsInterface {
     this.#custom.onUpdate(handler);
   }
 
-  get visitor():Visitor {
-    return this.#visitor
+  get visitor(): Visitor {
+    return this.#visitor;
   }
 
   interpolate(input: string) {

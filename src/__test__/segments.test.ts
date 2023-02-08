@@ -50,7 +50,7 @@ describe('Segments', () => {
       expect(segments.get('undef')).toBeUndefined();
       expect(segments.get('')).toBeUndefined();
       segments.set('name', null);
-      expect(segments.get('name')).toBeNull();
+      expect(segments.get('name')).toBeUndefined();
     });
   });
 
@@ -84,7 +84,10 @@ describe('Segments', () => {
         fired.push({ key, value });
       });
       segments.set('test', 'foo');
-      expect(fired).toEqual([{ key: 'test', value: 'foo' }]);
+      expect(fired).toEqual([
+        { key: 'cs', value: { test: 'foo' } },
+        { key: 'test', value: 'foo' },
+      ]);
     });
   });
 
