@@ -10,6 +10,7 @@ export class Visitor implements ValueStorageInterface {
   protected data: VisitorData;
   private readonly storage: ValueStorage;
   private readonly key: string;
+  readonly #handlers: ((key: string, value: string) => void)[] = [];
 
   constructor(key: string, adapter: StorageAdapterClass, expiresInDays: number = 365 * 5) {
     this.storage = new ValueStorage(new adapter(), expiresInDays * MINUTES_IN_DAY);
@@ -18,13 +19,23 @@ export class Visitor implements ValueStorageInterface {
     this.load();
   }
 
+  onUpdate(handler: (key: string, value: string) => void): void {
+    this.#handlers.push(handler);
+  }
+
   getValue(key: string): any {
     return this.data[key];
   }
 
   setValue(key: string, value: any): void {
-    this.data[key] = value;
-    this.save();
+    if (typeof this.getValue(key) !== 'object' && this.getValue(key) !== value) {
+      this.data[key] = value;
+      this.save();
+      this.#handlers.forEach((handler) => handler.call(handler.prototype, key, value));
+    } else {
+      this.data[key] = value;
+      this.save();
+    }
   }
 
   setValueOnce(key: string, value: any): void {

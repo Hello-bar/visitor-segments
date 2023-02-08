@@ -115,6 +115,24 @@ segments.geolocation.country
 segments.geolocation.countryName
 segments.geolocation.timezone
 segments.geolocation.mobileCell // true or false
+
+// Callbacks 
+segments.onUpdate((key, value) => {
+  console.log(key, value)
+})
+
+// Additional in memory store in case you want to use it for interpolation
+interface DataStorage {
+  set(key: string, value: any): void;
+  get(key: string): string | number;
+  onUpdate(handler: UpdateKeyHandler): void;
+}
+const extraStorage = new DataStorage()
+const segments = new Segments(scope, { extraStorage })
+extraStorage.set('testKey', 1)
+segments.get('testKey') === 1
+segments.interpolate('in memory value: {{testKey}}') === 'in memory value: 1'
+// testKey will disappear after page reload
 ```
 
 ## Build your own Segments

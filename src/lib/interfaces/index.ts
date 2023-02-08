@@ -32,6 +32,13 @@ export interface GeoProviderAdapter {
   getLocationInfo(): Promise<GeoLocationInfo>;
 }
 
+export type UpdateKeyHandler = (key: string, value: string) => void
+export interface DataStorage {
+  set(key: string, value: any): void;
+  get(key: string): string | number;
+  onUpdate(handler: UpdateKeyHandler): void;
+}
+
 export type GeoProvider = {
   key?: string | null;
   new (): GeoProviderAdapter;
@@ -57,10 +64,11 @@ export type SegmentsAdapters = {
   storageAdapter?: StorageAdapterClass;
   geoAdapter?: GeoProviderAdapter;
   segmentsMap?: SegmentClassMap;
+  extraStorage?: DataStorage;
 };
 
 export interface SegmentsInterface {
-  onUpdate(handler: (key: string, value: string) => void): void;
+  onUpdate(handler: UpdateKeyHandler): void;
   interpolate(input: string): string;
   set(key: string, value: any): void;
   get(key: string): any;
