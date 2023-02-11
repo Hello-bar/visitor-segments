@@ -68,6 +68,6 @@ export class Interpolation {
       console.debug(e, `can't interpolate %{${key}} tag`);
       value = '';
     }
-    return value || '';
+    return value || `{{${key}}}`;
   }
 }
