@@ -3,7 +3,7 @@ import { SEGMENT_KEYS } from './segmentMaps';
 import { City } from './segments/city';
 import { Region } from './segments/region';
 import { Country } from './segments/country';
-import { GEO_INFO_STATUSES, GeoProviderAdapter, SegmentsFacade } from './lib/interfaces';
+import {GEO_INFO_STATUSES, GeoLocationInfo, GeoProviderAdapter, SegmentsFacade} from './lib/interfaces';
 import { CountryName } from './segments/countryName';
 import { MobileCell } from './segments/mobileCell';
 import { RegionName } from './segments/regionName';
@@ -58,8 +58,8 @@ export class GeoLocation implements SegmentsFacade {
     return this.#mobileCell.value;
   }
 
-  async update() {
-    const info = await this.#adapter.getLocationInfo();
+  async update(override?: GeoLocationInfo) {
+    const info = override || await this.#adapter.getLocationInfo();
 
     if (info.status === GEO_INFO_STATUSES.success) {
       this.#city.setValue(info.city);
