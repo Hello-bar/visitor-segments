@@ -32,6 +32,10 @@ export interface GeoProviderAdapter {
   getLocationInfo(): Promise<GeoLocationInfo>;
 }
 
+export interface AdBlockProviderAdapter {
+  getAdBlockerInfo(): Promise<AdBlockerInfo>;
+}
+
 export type UpdateKeyHandler = (key: string, value: string) => void;
 export interface DataStorage {
   set(key: string, value: any): void;
@@ -60,9 +64,14 @@ export type GeoLocationInfo = {
   mobile?: boolean;
 };
 
+export type AdBlockerInfo = {
+  isEnabled?: boolean;
+}
+
 export type SegmentsAdapters = {
   storageAdapter?: StorageAdapterClass;
   geoAdapter?: GeoProviderAdapter;
+  adAdapter?: AdBlockProviderAdapter;
   segmentsMap?: SegmentClassMap;
   extraStorage?: DataStorage;
 };

@@ -8,6 +8,8 @@ import { Conversions } from './conversions';
 import { SegmentsAdapters } from './lib/interfaces';
 import { IPApiProvider } from './geo/ipapiProvider';
 import { AbstractSegments } from './abstractSegments';
+import { AdBlocker } from './adBlocker';
+import { AdBlockProvider } from './ads/adBlockProvider';
 
 export class Segments extends AbstractSegments {
   visits: Visits;
@@ -17,9 +19,11 @@ export class Segments extends AbstractSegments {
   referrer: Referrer;
   page: Page;
   conversions: Conversions;
+  adBlocker: AdBlocker;
 
   constructor(scope: string, options?: SegmentsAdapters) {
     const geoAdapter = options?.geoAdapter || new IPApiProvider();
+    const adAdapter = options?.adAdapter || new AdBlockProvider();
     super(scope, options);
 
     this.visits = new Visits(this);
@@ -29,6 +33,7 @@ export class Segments extends AbstractSegments {
     this.geolocation = new GeoLocation(this, geoAdapter);
     this.referrer = new Referrer(this);
     this.page = new Page(this);
+    this.adBlocker = new AdBlocker(this, adAdapter);
   }
 
   async visit() {
@@ -39,6 +44,7 @@ export class Segments extends AbstractSegments {
     this.referrer.update();
     this.page.update();
     await this.geolocation.update();
+    await this.adBlocker.update();
   }
 
   convert(): void {
@@ -54,6 +60,7 @@ export class Segments extends AbstractSegments {
     this.referrer.reset();
     this.page.reset();
     this.conversions.reset();
+    this.adBlocker.reset();
   }
 
   clear() {

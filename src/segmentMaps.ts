@@ -35,6 +35,7 @@ import { RegionName } from './segments/regionName';
 import { CountryName } from './segments/countryName';
 import { MobileCell } from './segments/mobileCell';
 import { Timezone } from './segments/timezone';
+import { AdBlockerDetect } from './segments/adBlockerDetect';
 
 export enum SEGMENT_KEYS {
   FIRST_VISIT = 'fv',
@@ -49,6 +50,7 @@ export enum SEGMENT_KEYS {
   AD_MEDIUM = 'ad_me',
   AD_CONTENT = 'ad_co',
   AD_TERM = 'ad_te',
+  AD_BLOCKER_DETECT = 'ad_blk',
   PARAMS = 'pq',
   ORIGINAL_REFERRER = 'or',
   REFERRER = 'rf',
@@ -88,6 +90,7 @@ export const SEGMENTS: SegmentClassMap = {
   [SEGMENT_KEYS.AD_CONTENT]: AdContent,
   [SEGMENT_KEYS.AD_CAMPAIGN]: AdCampaign,
   [SEGMENT_KEYS.AD_SOURCE]: AdSource,
+  [SEGMENT_KEYS.AD_BLOCKER_DETECT]: AdBlockerDetect,
   [SEGMENT_KEYS.PARAMS]: Params,
   [SEGMENT_KEYS.PREVIOUS_PAGE]: PreviousPage,
   [SEGMENT_KEYS.REFERRER]: Referrer,
