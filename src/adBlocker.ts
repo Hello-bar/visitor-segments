@@ -18,11 +18,8 @@ export class AdBlocker implements SegmentsFacade {
   }
 
   async update(override?: AdBlockerInfo) {
-    const info = override || (await this.#adapter.getAdBlockerInfo());
-
-    console.log('hey', info)
-
-    this.#adBlockerDetect.setValue(info.isEnabled);
+    const info = override || await this.#adapter.getAdBlockerInfo();
+    this.#adBlockerDetect.setValue(info?.isEnabled);
   }
 
   reset(): void {

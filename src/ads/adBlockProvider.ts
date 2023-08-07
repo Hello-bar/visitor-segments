@@ -27,7 +27,7 @@ export class AdBlockProvider implements AdBlockProviderAdapter{
   };
   
   async getAdBlockerInfo() {
-    await loadScript()
+    return await this.loadScript()
       .then((data) => {
         return data
       })
