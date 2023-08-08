@@ -44,7 +44,7 @@ describe('Segments.visits', () => {
   });
 
   describe('on first visit', () => {
-    beforeAll(async () => await segments.visit());
+    beforeAll(() => { segments.visit() });
 
     it('has .count', () => {
       expect(segments.visits.count).toEqual(1);
@@ -79,7 +79,7 @@ describe('Segments.visits', () => {
     beforeAll(() => {
       jest.useFakeTimers().setSystemTime(secondVisit);
     });
-    beforeAll(async () => await segments.visit());
+    beforeAll(() => { segments.visit() });
 
     it('has .count', () => {
       expect(segments.visits.count).toEqual(2);
@@ -114,7 +114,7 @@ describe('Segments.visits', () => {
     beforeAll(() => {
       jest.useFakeTimers().setSystemTime(lastVisit);
     });
-    beforeAll(async () => await segments.visit());
+    beforeAll(() => { segments.visit() });
 
     it('has .count', () => {
       expect(segments.visits.count).toEqual(3);

@@ -9,7 +9,7 @@ describe('Segments.geolocation', () => {
     segments.clear();
     jest.useFakeTimers().setSystemTime(firstVisit);
   });
-  beforeAll(async () => await segments.visit());
+  beforeAll( () => { segments.visit() });
 
   describe('when no geo info', () => {
     it('has .city', () => {
@@ -26,7 +26,7 @@ describe('Segments.geolocation', () => {
   });
 
   describe('when there is geo info', () => {
-    beforeAll(async () => {
+    beforeAll(() => {
       geoAdapter.set('city', 'Miami');
       geoAdapter.set('region', 'FL');
       geoAdapter.set('regionName', 'Florida');
@@ -34,7 +34,7 @@ describe('Segments.geolocation', () => {
       geoAdapter.set('country', 'United States');
       geoAdapter.set('timezone', 'America/New_York');
       geoAdapter.set('mobile', false);
-      await segments.visit();
+      segments.visit();
     });
 
     it('has .city', () => {

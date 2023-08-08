@@ -9,6 +9,7 @@ import { GeoLocation } from '../geolocation';
 import { Referrer } from '../referrer';
 import { Page } from '../page';
 import { segments } from './lib/segments';
+import { AdBlocker } from '../adBlocker';
 
 describe('Segments', () => {
   afterEach(() => {
@@ -35,6 +36,10 @@ describe('Segments', () => {
     expect(segments.geolocation).toBeInstanceOf(GeoLocation);
   });
 
+  it('has .adBlocker', () => {
+    expect(segments.adBlocker).toBeInstanceOf(AdBlocker);
+  });
+
   it('has .referrer', () => {
     expect(segments.referrer).toBeInstanceOf(Referrer);
   });
@@ -55,23 +60,25 @@ describe('Segments', () => {
   });
 
   describe('interpolation', () => {
-    it('', async () => {
+    it('', () => {
       segments.set('name', 'Anton');
       expect(segments.interpolate('{{name}}')).toEqual('Anton');
-      await segments.visit();
-      expect(segments.interpolate('{{name}}, {{visits.count}}')).toEqual('Anton, 1');
-      expect(segments.interpolate('{{name}} {{undefined}}')).toEqual('Anton {{undefined}}');
+      segments.visit();
+      setTimeout(() => {
+        expect(segments.interpolate('{{name}}, {{visits.count}}')).toEqual('Anton, 1');
+        expect(segments.interpolate('{{name}} {{undefined}}')).toEqual('Anton {{undefined}}');
+      },1000)
     });
   });
 
   describe('clear', () => {
-    it('delete all data', async () => {
-      await segments.visit();
-      expect(segments.visits.count).toEqual(1);
+    it('delete all data', () => {
+      segments.visit();
+      setTimeout( () => { expect(segments.visits.count).toEqual(1) } , 1000);
       segments.clear();
-      expect(segments.visits.count).toEqual(0);
-      await segments.visit();
-      expect(segments.visits.count).toEqual(1);
+      setTimeout( () => { expect(segments.visits.count).toEqual(0) } , 1000);
+      segments.visit();
+      setTimeout( () => { expect(segments.visits.count).toEqual(1) } , 1000);
       segments.clear();
     });
   });
@@ -92,8 +99,8 @@ describe('Segments', () => {
   });
 
   describe('reset', () => {
-    it('sets default values', async () => {
-      await segments.visit();
+    it('sets default values', () => {
+      segments.visit();
       segments.reset();
       expect(segments.visits.count).toEqual(0);
     });

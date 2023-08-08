@@ -11,7 +11,7 @@ describe('Segments.params', () => {
     segments.clear();
     jest.useFakeTimers().setSystemTime(firstVisit);
   });
-  beforeAll(async () => await segments.visit());
+  beforeAll(() => { segments.visit() });
 
   it('has .term', () => {
     expect(segments.params.term).toEqual('term');
