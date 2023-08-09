@@ -1,7 +1,7 @@
 /**
  * @jest-environment jsdom
  */
-import { adSegments, adAdapter } from '../__test__lib/segments';
+import { adSegments, adAdapter } from '../../__test__lib/segments';
 const firstVisit: Date = new Date('2020-01-01T00:00');
 
 describe('Segments.adBlocker', () => {

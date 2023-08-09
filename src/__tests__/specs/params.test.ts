@@ -2,7 +2,7 @@
  * @jest-environment jsdom
  * @jest-environment-options {"url": "https://test.io/?utm_term=term&utm_campaign=campaign&utm_content=content&utm_medium=medium&utm_source=source&custom_param=foo"}
  */
-import { segments } from '../__test__lib/segments';
+import { segments } from '../../__test__lib/segments';
 
 const firstVisit: Date = new Date('2020-01-01T00:00');
 

@@ -1,7 +1,7 @@
 /**
  * @jest-environment jsdom
  */
-import { segments } from '../__test__lib/segments';
+import { segments } from '../../__test__lib/segments';
 
 const firstVisit: Date = new Date('2020-01-01T00:00');
 const secondVisit = new Date('2020-01-01T02:00');
