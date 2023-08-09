@@ -104,6 +104,7 @@
   "include": ["src"],
   "exclude": [
     "**/__tests__/*",
+    "**/__test__lib/*",
     "**/*.test.ts",
     "node_modules",
     "*.config.ts"
