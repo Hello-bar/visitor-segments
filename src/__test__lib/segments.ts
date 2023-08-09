@@ -1,4 +1,4 @@
-import { Segments } from '../../segments';
+import { Segments } from '../segments';
 import { AdBlockerTestProvider, GeoTestProvider } from './TestProvider';
 
 export const geoAdapter = new GeoTestProvider();

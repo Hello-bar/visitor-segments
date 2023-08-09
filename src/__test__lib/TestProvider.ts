@@ -1,4 +1,4 @@
-import { GEO_INFO_STATUSES, GeoLocationInfo, GeoProviderAdapter, AdBlockerInfo, AdBlockProviderAdapter } from '../../lib/interfaces';
+import { GEO_INFO_STATUSES, GeoLocationInfo, GeoProviderAdapter, AdBlockerInfo, AdBlockProviderAdapter } from '../lib/interfaces';
 
 export class GeoTestProvider implements GeoProviderAdapter {
   info: GeoLocationInfo = { status: GEO_INFO_STATUSES.success };

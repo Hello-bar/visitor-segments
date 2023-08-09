@@ -8,7 +8,7 @@ import { Params } from '../params';
 import { GeoLocation } from '../geolocation';
 import { Referrer } from '../referrer';
 import { Page } from '../page';
-import { segments } from './lib/segments';
+import { segments } from '../__test__lib/segments';
 import { AdBlocker } from '../adBlocker';
 
 describe('Segments', () => {
