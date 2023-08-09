@@ -103,7 +103,7 @@
   },
   "include": ["src"],
   "exclude": [
-    "**/__test__/*",
+    "**/__tests__/*",
     "**/*.test.ts",
     "node_modules",
     "*.config.ts"

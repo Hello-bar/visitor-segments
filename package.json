@@ -8,7 +8,7 @@
     "clean": "rimraf ./lib",
     "build": "tsc -p tsconfig.build.json",
     "build:clean": "yarn clean && yarn build",
-    "test": "jest testMatch: ['**/__test__/**.test.ts']",
+    "test": "jest",
     "format": "prettier --write \"src/**/*.ts\"",
     "lint": "tslint -p tsconfig.json",
     "test-ci": "yarn jest --color --config jest.config.ts",
