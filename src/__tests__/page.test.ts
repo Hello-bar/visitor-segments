@@ -2,7 +2,7 @@
  * @jest-environment jsdom
  * @jest-environment-options {"url": "http://test.io/path?foo=bar&baz=foo"}
  */
-import { segments } from '../../__test__lib/segments';
+import { segments } from '../__test__lib/segments';
 
 let userAgentGetter: any;
 

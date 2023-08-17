@@ -1,7 +1,7 @@
 /**
  * @jest-environment jsdom
  */
-import { segments } from '../../__test__lib/segments';
+import { segments } from '../__test__lib/segments';
 
 const firstConversion: Date = new Date('2020-01-01T00:00');
 const secondConversion = new Date('2020-01-01T02:00');

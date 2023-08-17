@@ -1,15 +1,15 @@
 /**
  * @jest-environment jsdom
  */
-import { Visits } from '../../visits';
-import { Session } from '../../session';
-import { Conversions } from '../../conversions';
-import { Params } from '../../params';
-import { GeoLocation } from '../../geolocation';
-import { Referrer } from '../../referrer';
-import { Page } from '../../page';
-import { segments } from '../../__test__lib/segments';
-import { AdBlocker } from '../../adBlocker';
+import { Visits } from '../visits';
+import { Session } from '../session';
+import { Conversions } from '../conversions';
+import { Params } from '../params';
+import { GeoLocation } from '../geolocation';
+import { Referrer } from '../referrer';
+import { Page } from '../page';
+import { segments } from '../__test__lib/segments';
+import { AdBlocker } from '../adBlocker';
 
 describe('Segments', () => {
   afterEach(() => {
