@@ -12,7 +12,9 @@ describe('Segments.session', () => {
     segments.clear();
     jest.useFakeTimers().setSystemTime(firstVisit);
   });
-  beforeAll( () => { segments.visit() });
+  beforeAll(() => {
+    segments.visit();
+  });
 
   it('has .count', () => {
     expect(segments.session.count).toEqual(1);
@@ -26,7 +28,9 @@ describe('Segments.session', () => {
     beforeAll(() => {
       jest.useFakeTimers().setSystemTime(secondVisit);
     });
-    beforeAll( () => { segments.visit() });
+    beforeAll(() => {
+      segments.visit();
+    });
 
     it('has .count', () => {
       expect(segments.session.count).toEqual(2);
@@ -37,7 +41,9 @@ describe('Segments.session', () => {
     beforeAll(() => {
       jest.useFakeTimers().setSystemTime(lastVisit);
     });
-    beforeAll( () => { segments.visit() });
+    beforeAll(() => {
+      segments.visit();
+    });
 
     it('has .count', () => {
       expect(segments.session.count).toEqual(3);
@@ -48,15 +54,21 @@ describe('Segments.session', () => {
     beforeAll(() => {
       jest.useFakeTimers().setSystemTime(lastVisit);
     });
-    beforeAll( () => { segments.visit() });
+    beforeAll(() => {
+      segments.visit();
+    });
 
     it('starts new session on next visit', () => {
       segments.session.end();
       expect(segments.session.count).toEqual(3);
       segments.visit();
-      setTimeout( () => { expect(segments.session.count).toEqual(4) } , 1000);
+      setTimeout(() => {
+        expect(segments.session.count).toEqual(4);
+      }, 1000);
       segments.visit();
-      setTimeout( () => { expect(segments.session.count).toEqual(4) } , 1000);
+      setTimeout(() => {
+        expect(segments.session.count).toEqual(4);
+      }, 1000);
     });
   });
 });

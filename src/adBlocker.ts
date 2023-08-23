@@ -4,7 +4,6 @@ import { AdBlockProviderAdapter, AdBlockerInfo, SegmentsFacade } from './lib/int
 import { AdBlockerDetect } from './segments/adBlockerDetect';
 
 export class AdBlocker implements SegmentsFacade {
-
   #adBlockerDetect: AdBlockerDetect;
   #adapter: AdBlockProviderAdapter;
 
@@ -18,7 +17,7 @@ export class AdBlocker implements SegmentsFacade {
   }
 
   async update(override?: AdBlockerInfo) {
-    const info = override || await this.#adapter.getAdBlockerInfo();
+    const info = override || (await this.#adapter.getAdBlockerInfo());
     this.#adBlockerDetect.setValue(info?.isEnabled);
   }
 

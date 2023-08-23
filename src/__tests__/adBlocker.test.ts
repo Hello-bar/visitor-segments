@@ -10,11 +10,13 @@ describe('Segments.adBlocker', () => {
     jest.useFakeTimers().setSystemTime(firstVisit);
   });
 
-  beforeAll( () => { adSegments.visit() } );
+  beforeAll(() => {
+    adSegments.visit();
+  });
 
   describe('when ad blocker detected info', () => {
     it('has .adBlockerDetect', () => {
-      expect(adSegments.adBlocker.adBlockerDetect).toEqual(false)
+      expect(adSegments.adBlocker.adBlockerDetect).toEqual(false);
     });
   });
 
@@ -22,7 +24,7 @@ describe('Segments.adBlocker', () => {
     beforeAll(() => {
       adAdapter.set('isEnabled', true);
       adSegments.visit();
-    })
+    });
 
     it('has .adBlockerDetect', () => {
       expect(adSegments.adBlocker.adBlockerDetect).toEqual(true);

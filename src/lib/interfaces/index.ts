@@ -33,7 +33,7 @@ export interface GeoProviderAdapter {
 }
 
 export interface AdBlockProviderAdapter {
-  getAdBlockerInfo(): Promise<AdBlockerInfo|any>;
+  getAdBlockerInfo(): Promise<AdBlockerInfo | any>;
 }
 
 export type UpdateKeyHandler = (key: string, value: string) => void;
@@ -66,7 +66,7 @@ export type GeoLocationInfo = {
 
 export type AdBlockerInfo = {
   isEnabled?: boolean;
-}
+};
 
 export type SegmentsAdapters = {
   storageAdapter?: StorageAdapterClass;

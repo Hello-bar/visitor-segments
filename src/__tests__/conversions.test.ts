@@ -11,7 +11,9 @@ describe('Segments.conversions', () => {
     segments.clear();
     jest.useFakeTimers().setSystemTime(firstConversion);
   });
-  beforeAll( () => { segments.visit() });
+  beforeAll(() => {
+    segments.visit();
+  });
 
   describe('when no conversions', () => {
     it('has .count', () => {

@@ -67,18 +67,24 @@ describe('Segments', () => {
       setTimeout(() => {
         expect(segments.interpolate('{{name}}, {{visits.count}}')).toEqual('Anton, 1');
         expect(segments.interpolate('{{name}} {{undefined}}')).toEqual('Anton {{undefined}}');
-      },1000)
+      }, 1000);
     });
   });
 
   describe('clear', () => {
     it('delete all data', () => {
       segments.visit();
-      setTimeout( () => { expect(segments.visits.count).toEqual(1) } , 1000);
+      setTimeout(() => {
+        expect(segments.visits.count).toEqual(1);
+      }, 1000);
       segments.clear();
-      setTimeout( () => { expect(segments.visits.count).toEqual(0) } , 1000);
+      setTimeout(() => {
+        expect(segments.visits.count).toEqual(0);
+      }, 1000);
       segments.visit();
-      setTimeout( () => { expect(segments.visits.count).toEqual(1) } , 1000);
+      setTimeout(() => {
+        expect(segments.visits.count).toEqual(1);
+      }, 1000);
       segments.clear();
     });
   });

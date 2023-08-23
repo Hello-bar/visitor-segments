@@ -16,7 +16,9 @@ beforeAll(() => {
 });
 
 describe('Segments.page', () => {
-  beforeEach( () => { segments.visit() });
+  beforeEach(() => {
+    segments.visit();
+  });
 
   it('has .path', () => {
     expect(segments.page.path).toEqual('/path');
@@ -49,12 +51,14 @@ describe('Segments.page', () => {
       document.cookie = 'bool=true;';
       document.cookie = 'num=1;';
       segments.visit();
-      setTimeout( () => { expect(segments.page.cookies).toEqual({
-        key: 'value',
-        key2: 'value2',
-        bool: true,
-        num: 1,
-      }) }, 1000);
+      setTimeout(() => {
+        expect(segments.page.cookies).toEqual({
+          key: 'value',
+          key2: 'value2',
+          bool: true,
+          num: 1,
+        });
+      }, 1000);
     });
   });
 
@@ -66,7 +70,9 @@ describe('Segments.page', () => {
 
   describe('when userAgent is ipad', () => {
     beforeEach(() => userAgentGetter.mockReturnValue('ipad'));
-    beforeEach( () => { segments.visit() });
+    beforeEach(() => {
+      segments.visit();
+    });
 
     it('.device is "tablet"', () => {
       expect(segments.page.device).toEqual('tablet');
@@ -75,7 +81,9 @@ describe('Segments.page', () => {
 
   describe.each(['mobile', 'phone', 'ipod', 'blackberry', 'docomo'])('when userAgent is a %s', (useragent) => {
     beforeEach(() => userAgentGetter.mockReturnValue(useragent));
-    beforeEach( () => { segments.visit() });
+    beforeEach(() => {
+      segments.visit();
+    });
 
     it('.device is "mobile"', () => {
       expect(segments.page.device).toEqual('mobile');

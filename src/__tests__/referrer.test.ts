@@ -11,7 +11,9 @@ describe('Segments.referrer', () => {
     segments.clear();
     jest.useFakeTimers().setSystemTime(firstVisit);
   });
-  beforeAll(() => { segments.visit(); });
+  beforeAll(() => {
+    segments.visit();
+  });
 
   it('has .referrer', () => {
     expect(segments.referrer.referrer).toEqual('example.com/?search=terms');

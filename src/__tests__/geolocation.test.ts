@@ -9,7 +9,9 @@ describe('Segments.geolocation', () => {
     segments.clear();
     jest.useFakeTimers().setSystemTime(firstVisit);
   });
-  beforeAll( () => { segments.visit() });
+  beforeAll(() => {
+    segments.visit();
+  });
 
   describe('when no geo info', () => {
     it('has .city', () => {
