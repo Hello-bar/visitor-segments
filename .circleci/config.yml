@@ -29,10 +29,13 @@ jobs:
       - node/install:
           node-version: << parameters.node-version >>
       - node/install-packages: *install
+      - run: 
+          name: Create junit directory
+          command: mkdir ~/junit
       - run:
-          command: yarn test-ci --shard=$(expr $CIRCLE_NODE_INDEX + 1)/$CIRCLE_NODE_TOTAL
+          command: yarn test-ci
       - store_test_results:
-          path: reports/junit
+          path: ~/junit
       - codecov/upload
 
 # Invoke jobs via workflows
