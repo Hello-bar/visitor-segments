@@ -2,7 +2,7 @@
  * @jest-environment jsdom
  * @jest-environment-options {"referrer": "https://example.com/?search=terms"}
  */
-import { segments } from './lib/segments';
+import { segments } from '../__test__lib/segments';
 
 const firstVisit: Date = new Date('2020-01-01T00:00');
 
@@ -11,7 +11,7 @@ describe('Segments.referrer', () => {
     segments.clear();
     jest.useFakeTimers().setSystemTime(firstVisit);
   });
-  beforeAll(async () => await segments.visit());
+  beforeAll(() => { segments.visit(); });
 
   it('has .referrer', () => {
     expect(segments.referrer.referrer).toEqual('example.com/?search=terms');

@@ -2,7 +2,7 @@
  * @jest-environment jsdom
  * @jest-environment-options {"url": "https://test.io/?utm_term=term&utm_campaign=campaign&utm_content=content&utm_medium=medium&utm_source=source&custom_param=foo"}
  */
-import { segments } from './lib/segments';
+import { segments } from '../__test__lib/segments';
 
 const firstVisit: Date = new Date('2020-01-01T00:00');
 
@@ -11,7 +11,7 @@ describe('Segments.params', () => {
     segments.clear();
     jest.useFakeTimers().setSystemTime(firstVisit);
   });
-  beforeAll(async () => await segments.visit());
+  beforeAll(() => { segments.visit() });
 
   it('has .term', () => {
     expect(segments.params.term).toEqual('term');

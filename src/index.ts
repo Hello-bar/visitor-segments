@@ -7,6 +7,7 @@ export { SessionStorageAdapter } from './valueStorage/sessionStorageAdapter';
 export { SegmentsAdapters, SegmentClassMap } from './lib/interfaces';
 export { SEGMENT_KEYS } from './segmentMaps';
 export { IPApiProvider } from './geo/ipapiProvider';
+export { AdBlockProvider } from './ads/adBlockProvider';
 export { Visitor } from './visitor';
 export { AbstractSegments } from './abstractSegments';
 export { Segments };

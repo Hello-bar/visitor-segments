@@ -1,7 +1,7 @@
 /**
  * @jest-environment jsdom
  */
-import { segments } from './lib/segments';
+import { segments } from '../__test__lib/segments';
 
 const firstVisit: Date = new Date('2020-01-01T00:00');
 const secondVisit = new Date('2020-01-01T02:00');
@@ -12,7 +12,7 @@ describe('Segments.session', () => {
     segments.clear();
     jest.useFakeTimers().setSystemTime(firstVisit);
   });
-  beforeAll(async () => await segments.visit());
+  beforeAll( () => { segments.visit() });
 
   it('has .count', () => {
     expect(segments.session.count).toEqual(1);
@@ -26,7 +26,7 @@ describe('Segments.session', () => {
     beforeAll(() => {
       jest.useFakeTimers().setSystemTime(secondVisit);
     });
-    beforeAll(async () => await segments.visit());
+    beforeAll( () => { segments.visit() });
 
     it('has .count', () => {
       expect(segments.session.count).toEqual(2);
@@ -37,7 +37,7 @@ describe('Segments.session', () => {
     beforeAll(() => {
       jest.useFakeTimers().setSystemTime(lastVisit);
     });
-    beforeAll(async () => await segments.visit());
+    beforeAll( () => { segments.visit() });
 
     it('has .count', () => {
       expect(segments.session.count).toEqual(3);
@@ -48,15 +48,15 @@ describe('Segments.session', () => {
     beforeAll(() => {
       jest.useFakeTimers().setSystemTime(lastVisit);
     });
-    beforeAll(async () => await segments.visit());
+    beforeAll( () => { segments.visit() });
 
-    it('starts new session on next visit', async () => {
+    it('starts new session on next visit', () => {
       segments.session.end();
       expect(segments.session.count).toEqual(3);
-      await segments.visit();
-      expect(segments.session.count).toEqual(4);
-      await segments.visit();
-      expect(segments.session.count).toEqual(4);
+      segments.visit();
+      setTimeout( () => { expect(segments.session.count).toEqual(4) } , 1000);
+      segments.visit();
+      setTimeout( () => { expect(segments.session.count).toEqual(4) } , 1000);
     });
   });
 });

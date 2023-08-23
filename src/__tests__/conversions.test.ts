@@ -1,7 +1,7 @@
 /**
  * @jest-environment jsdom
  */
-import { segments } from './lib/segments';
+import { segments } from '../__test__lib/segments';
 
 const firstConversion: Date = new Date('2020-01-01T00:00');
 const secondConversion = new Date('2020-01-01T02:00');
@@ -11,7 +11,7 @@ describe('Segments.conversions', () => {
     segments.clear();
     jest.useFakeTimers().setSystemTime(firstConversion);
   });
-  beforeAll(async () => await segments.visit());
+  beforeAll( () => { segments.visit() });
 
   describe('when no conversions', () => {
     it('has .count', () => {
