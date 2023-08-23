@@ -1,5 +1,6 @@
 import { Segments } from '../segments';
-import { AdBlockerTestProvider, GeoTestProvider } from './TestProvider';
+import { GeoTestProvider } from './TestProvider';
+import { AdBlockerTestProvider } from './AdTestProvider';
 
 export const geoAdapter = new GeoTestProvider();
 export const adAdapter = new AdBlockerTestProvider();

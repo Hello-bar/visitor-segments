@@ -6,7 +6,7 @@ export class AdBlockProvider implements AdBlockProviderAdapter{
   async loadScript() {
     return new Promise((resolve, reject) => {
       try {
-        let adBlockScript = document.createElement('script');
+        const adBlockScript = document.createElement('script');
         adBlockScript.src = AdBlockProvider.adBlockerCheckUrl;
         adBlockScript.async = false;
         adBlockScript.defer = false;
