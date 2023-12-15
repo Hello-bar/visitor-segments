@@ -24,6 +24,10 @@ describe('Segments.page', () => {
     expect(segments.page.path).toEqual('/path');
   });
 
+  it('has .url', () => {
+    expect(segments.page.url).toEqual('http://test.io/path?foo=bar&baz=foo');
+  });
+
   it('has .date', () => {
     expect(segments.page.date).toEqual('2020-01-01');
   });

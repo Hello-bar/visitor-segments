@@ -14,6 +14,7 @@ import { Referrer } from './segments/referrer';
 import { ReferrerDomain } from './segments/referrerDomain';
 import { ReferrerTerms } from './segments/referrerTerms';
 import { PagePath } from './segments/pagePath';
+import { PageUrl } from './segments/pageUrl';
 import { UrlKeywords } from './segments/urlKeywords';
 import { DateSegment } from './segments/dateSegment';
 import { DayOfWeek } from './segments/dayOfWeek';
@@ -57,6 +58,7 @@ export enum SEGMENT_KEYS {
   REFERRER_DOMAIN = 'rd',
   REFERRER_TERMS = 'st',
   PREVIOUS_PAGE = 'pp',
+  PAGE_URL = 'pu',
   PAGE_PATH = 'pup',
   URL_KEYWORDS = 'puk',
   DATE = 'dt',
@@ -98,6 +100,7 @@ export const SEGMENTS: SegmentClassMap = {
   [SEGMENT_KEYS.REFERRER_DOMAIN]: ReferrerDomain,
   [SEGMENT_KEYS.REFERRER_TERMS]: ReferrerTerms,
   [SEGMENT_KEYS.PAGE_PATH]: PagePath,
+  [SEGMENT_KEYS.PAGE_URL]: PageUrl,
   [SEGMENT_KEYS.URL_KEYWORDS]: UrlKeywords,
   [SEGMENT_KEYS.DATE]: DateSegment,
   [SEGMENT_KEYS.DAY_OF_WEEK]: DayOfWeek,

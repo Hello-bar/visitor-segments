@@ -84,6 +84,7 @@ segments.page.device // mobile, tablet or computer
 segments.page.cookies // cookies object
 segments.page.date // current date as string 2000-01-01 
 segments.page.dayOfWeek  
+segments.page.url //location.href
 segments.page.path // location.pathname 
 segments.page.urlKeywords // words from the current url  
 

@@ -5,6 +5,7 @@ import { DateSegment } from './segments/dateSegment';
 import { Cookies } from './segments/cookies';
 import { DayOfWeek } from './segments/dayOfWeek';
 import { PagePath } from './segments/pagePath';
+import { PageUrl } from './segments/pageUrl';
 import { UrlKeywords } from './segments/urlKeywords';
 import { WordpressTags } from './segments/wordpressTags';
 import { SegmentsFacade } from './lib/interfaces';
@@ -15,6 +16,7 @@ export class Page implements SegmentsFacade {
   #date: DateSegment;
   #dayOfWeek: DayOfWeek;
   #path: PagePath;
+  #url: PageUrl
   #keywords: UrlKeywords;
   #wpTags: WordpressTags;
 
@@ -24,6 +26,7 @@ export class Page implements SegmentsFacade {
     this.#date = segments.getSegmentByKey(SEGMENT_KEYS.DATE);
     this.#dayOfWeek = segments.getSegmentByKey(SEGMENT_KEYS.DAY_OF_WEEK);
     this.#path = segments.getSegmentByKey(SEGMENT_KEYS.PAGE_PATH) as PagePath;
+    this.#url = segments.getSegmentByKey(SEGMENT_KEYS.PAGE_URL) as PageUrl;
     this.#keywords = segments.getSegmentByKey(SEGMENT_KEYS.URL_KEYWORDS) as UrlKeywords;
     this.#wpTags = segments.getSegmentByKey(SEGMENT_KEYS.WORDPRESS_TAGS) as WordpressTags;
   }
@@ -48,6 +51,10 @@ export class Page implements SegmentsFacade {
     return this.#path.value;
   }
 
+  get url(): string {
+    return this.#url.value;
+  }
+
   get urlKeywords(): string[] {
     return this.#keywords.value;
   }
@@ -62,6 +69,7 @@ export class Page implements SegmentsFacade {
     this.#date.setValue();
     this.#dayOfWeek.setValue();
     this.#path.setValue();
+    this.#url.setValue();
     this.#keywords.setValue();
     this.#wpTags.setValue();
   }
@@ -72,6 +80,7 @@ export class Page implements SegmentsFacade {
     this.#date.reset();
     this.#dayOfWeek.reset();
     this.#path.reset();
+    this.#url.reset();
     this.#keywords.reset();
     this.#wpTags.reset();
   }
