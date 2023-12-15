@@ -16,7 +16,7 @@ export class Page implements SegmentsFacade {
   #date: DateSegment;
   #dayOfWeek: DayOfWeek;
   #path: PagePath;
-  #url: PageUrl
+  #url: PageUrl;
   #keywords: UrlKeywords;
   #wpTags: WordpressTags;
 
