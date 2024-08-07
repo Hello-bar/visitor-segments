@@ -29,9 +29,9 @@ describe('Segments.geolocation', () => {
 
   describe('when there is geo info', () => {
     beforeAll(() => {
-      geoAdapter.set('city', 'Miami');
+      geoAdapter.set('city', 'miami');
       geoAdapter.set('region', 'FL');
-      geoAdapter.set('regionName', 'Florida');
+      geoAdapter.set('regionName', 'florida');
       geoAdapter.set('countryCode', 'US');
       geoAdapter.set('country', 'United States');
       geoAdapter.set('timezone', 'America/New_York');
@@ -40,7 +40,7 @@ describe('Segments.geolocation', () => {
     });
 
     it('has .city', () => {
-      expect(segments.geolocation.city).toEqual('Miami');
+      expect(segments.geolocation.city).toEqual('miami');
     });
 
     it('has .region', () => {
@@ -56,7 +56,7 @@ describe('Segments.geolocation', () => {
     });
 
     it('has .regionName', () => {
-      expect(segments.geolocation.regionName).toEqual('Florida');
+      expect(segments.geolocation.regionName).toEqual('florida');
     });
 
     it('has .regionName', () => {

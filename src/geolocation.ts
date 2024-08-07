@@ -62,9 +62,9 @@ export class GeoLocation implements SegmentsFacade {
     const info = override || (await this.#adapter.getLocationInfo());
 
     if (info.status === GEO_INFO_STATUSES.success) {
-      this.#city.setValue(info.city);
+      this.#city.setValue(info.city?.toLocaleLowerCase());
       this.#region.setValue(info.region);
-      this.#regionName.setValue(info.regionName);
+      this.#regionName.setValue(info.regionName?.toLocaleLowerCase());
       this.#country.setValue(info.countryCode);
       this.#countryName.setValue(info.country);
       this.#timezone.setValue(info.timezone);
